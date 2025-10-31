@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #9b2a2a;
+    background: linear-gradient(90deg, rgba(155, 42, 42, 1) 0%, rgba(24, 28, 26, 1) 97%);
+    color: white;
+}
+
+
+.main-section {
+    display: flex;
+    justify-content: center;  /* centers horizontally */
+    align-items: center;      /* centers vertically */
+    height: 100vh;            /* makes sure it takes full viewport height */
+}
+
+
+.sign-up-box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 350px;          /* box width */
+    padding: 2rem;         /* inner spacing */
+
+    border-radius: 10px;   
+    margin-bottom: 10%;
+}
+
+.title-sign-up {
+    margin-left: px;
+}
+
+.sign-up-fields {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+}
+
+.sign-up-fields input {
+    width: 100%;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 6px;
+}
+
+.sign-up-buttons {
+    padding: 10px;
+    width: 106%;
+    border: none;
+    border-radius: 6px;    
+}
+
+
+
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.akatsuki-logo {
+    margin-left: 2%;
+}
+
+#login-link {
+    text-decoration: none;
+    margin-top: 3%;
+    padding: 9px;
+    border: none;
+    height: 16px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(68, 67, 67, 0.438);
+    color: white;
+
+}
