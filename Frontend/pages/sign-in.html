@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Log</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+
+    <header>
+
+      <nav class="nav-bar">
+        <button id="login-menu-button">Login</button>
+        <button id="sign-up-menu-button">Sign up</button>
+      </nav>
+
+    </header>
+
+    <main class="main-section">
+
+      <div id="sign-up-box" class="hidden">
+        <h3 class="title-sign-up">Sign up</h3>
+
+        <div class="sign-up-fields">
+          username: <input type="text" /> 
+          email:<input type="email" /> 
+          password: <input type="password" />
+          <button id="sign_up_button" class="sign-up-buttons">Sign up</button>
+          <button class="sign-up-buttons">Sign Up with Github</button>
+          <button class="sign-up-buttons">Sign Up with Google</button>
+        </div>
+      </div>
+
+      <div id="Login-box" class="hidden">
+        <h3 class="title-login">Login</h3>
+
+        <div class="login-fields">
+
+          username: <input type="text" />
+          password: <input type="password" />
+          <button id="sign_up_button" class="sign-up-buttons">Login</button>
+          <button class="sign-up-buttons">Login with Github</button>
+          <button class="sign-up-buttons">Login with Google</button>
+
+        </div>
+      </div>
+
+    </main>
+    <script src="../script.js"></script>
+  </body>
+</html>

@@ -14,17 +14,20 @@ body {
     height: 100vh;            /* makes sure it takes full viewport height */
 }
 
+.hidden {
+    display: none;
+}
 
-.sign-up-box {
+#sign-up-box {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    width: 350px;          /* box width */
+    width: 310px;          /* box width */
     padding: 2rem;         /* inner spacing */
-
     border-radius: 10px;   
     margin-bottom: 10%;
+    
 }
 
 .title-sign-up {
@@ -48,10 +51,13 @@ body {
 }
 
 .sign-up-buttons {
+    color: white;
     padding: 10px;
     width: 106%;
     border: none;
-    border-radius: 6px;    
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(68, 67, 67, 0.438);    
 }
 
 
@@ -67,15 +73,64 @@ body {
     margin-left: 2%;
 }
 
-#login-link {
+#sign-up-menu-button {
     text-decoration: none;
-    margin-top: 3%;
-    padding: 9px;
+    margin-top: 1.5%;
+    margin-right: 1%;
     border: none;
-    height: 16px;
-    border-radius: 18px;
+    height: 30px;
+    border-radius: 20px;
     backdrop-filter: blur(10px);
     background-color: rgba(68, 67, 67, 0.438);
     color: white;
-
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0px 6px;
+    display: none;
 }
+
+#login-menu-button {
+    text-decoration: none;
+    margin-top: 1.5%;
+    margin-right: 1%;
+    border: none;
+    height: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(68, 67, 67, 0.438);
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0px 6px;
+}
+
+
+#Login-box {
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 310px;          /* box width */
+    padding: 2rem;         /* inner spacing */
+    border-radius: 10px;   
+    margin-bottom: 10%;
+    
+}
+
+.login-fields {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+}
+
+.login-fields input {
+    width: 100%;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 6px;   
+}
+
+
