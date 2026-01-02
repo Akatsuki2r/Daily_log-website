@@ -1,0 +1,6 @@
+sqlalchemy
+uvicorn
+fastapi
+sqlparse
+psycopg2-binary
+dotenv
