@@ -37,14 +37,14 @@ const PassWord = document.querySelector(".signup-password");
 const SubmitButton = document.querySelector("#sign_up_button");
 const signUpButton = document.querySelector(".sign-up-buttons");
 
-
 function get_user_data(id) {
   const content = id.value.trim();
-  console.log(content)
-  return content
+  console.log(content);
+  return content;
 }
 
-SubmitButton.addEventListener("click", () => {
+SubmitButton.addEventListener("click", (e) => {
+  e.preventDefault();
   const username = get_user_data(UserName);
   const useremail = get_user_data(Email);
   const userpassword = get_user_data(PassWord);
@@ -54,11 +54,11 @@ SubmitButton.addEventListener("click", () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      NAME: username,
-      EMAIL: useremail,
-      PASSWORD: userpassword,
+      name: username,
+      email: useremail,
+      password: userpassword,
     }),
   })
-  
-
+    .then((response) => response.json())
+    .then((data) => console.log(data)).catch();
 });
