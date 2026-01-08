@@ -1,14 +1,14 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import HTTPBasic, HTTPBasicCredentials
-from Backend.pydanticmodels.pydantic_models import User
-from database.database import Base, engine
+from models.models import Base, engine, SessionLocal, get_db, Session
+from models.models import User
+from pydanticmodels.pydantic_models import *
+from router import  authentication
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-
+Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,13 +17,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
-@app.post('/authentication/SignUp')
-async  def signup(usrdata: User):
-    print(usrdata)
-    
-
-
-
+app.include_router(authentication.router)
 
 

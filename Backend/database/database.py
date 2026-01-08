@@ -1,11 +1,16 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
- 
+from sqlalchemy.engine import URL
 
-URL_DATABASE = 'postgresql://postgres:1234@hokage@localhost:5432/Daily_log'
 
-engine =  create_engine(URL_DATABASE, echo=True)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-Base = declarative_base()
+
+
+url_object = URL.create(
+    "postgresql",
+    username="postgres",
+    password="1234",
+    host="localhost",
+    port=5432,
+    database="Daily_log"
+)
+
+

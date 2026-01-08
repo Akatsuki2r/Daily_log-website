@@ -45,20 +45,62 @@ function get_user_data(id) {
 
 SubmitButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const username = get_user_data(UserName);
-  const useremail = get_user_data(Email);
-  const userpassword = get_user_data(PassWord);
-  fetch("http://127.0.0.1:8001/authentication/SignUp", {
+  const userData = {
+    username: UserName.value.trim(),
+    email: Email.value.trim(),
+    hashed_password: PassWord.value.trim(),
+  };
+
+  fetch("http://127.0.0.1:8001/v1/authentication/SignUp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Signup failed");
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Success:", data);
+      alert("Registration Successful!");
+    })
+    .catch((error) => console.error("Error:", error));
+});
+
+//Login
+const Login_password = document.querySelector("#login-password");
+const Login_email = document.querySelector("#login-email");
+
+const Login_button = document.querySelector("#Log_in_button");
+
+Login_button.addEventListener("click", (e) => {
+  const UsrData = {
+    email: Login_email.value.trim(),
+    password: Login_password.value.trim(),
+  };
+
+  fetch("http://127.0.0.1:8001/v1/authentication/Login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      name: username,
-      email: useremail,
-      password: userpassword,
-    }),
+    body: JSON.stringify(UsrData),
   })
-    .then((response) => response.json())
-    .then((data) => console.log(data)).catch();
+    .then((response) => {
+      if (!response.ok) throw new Error("Login failed");
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Success:", data);
+      alert("Login Successful!");
+      const welcomeMessage = document.querySelector("#welcome_message");
+      if (welcomeMessage) {
+        welcomeMessage.textContent = `Welcome ${data.username || "User"}`;
+      }
+
+      window.location.assign("index.html");
+    })
+    .catch((error) => console.error("Error:", error));
 });
+
+
