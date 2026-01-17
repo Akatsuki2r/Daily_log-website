@@ -3,7 +3,6 @@ from sqlalchemy.engine import URL
 
 
 
-
 url_object = URL.create(
     "postgresql",
     username="postgres",
@@ -12,5 +11,3 @@ url_object = URL.create(
     port=5432,
     database="Daily_log"
 )
-
-

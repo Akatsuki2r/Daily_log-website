@@ -16,7 +16,7 @@ const showLogin = () => {
 };
 
 function showSignup() {
-  if (sign_up_box.style.display === "flex") {
+  if (sign_up_box.style.display === "flex") { 
     sign_up_box.style.display = "none";
   } else {
     login_box.style.display = "none";
@@ -74,10 +74,12 @@ const Login_email = document.querySelector("#login-email");
 const Login_button = document.querySelector("#Log_in_button");
 
 Login_button.addEventListener("click", (e) => {
+  e.preventDefault();
   const UsrData = {
     email: Login_email.value.trim(),
     password: Login_password.value.trim(),
   };
+  console.log(UsrData);
 
   fetch("http://127.0.0.1:8001/v1/authentication/Login", {
     method: "POST",
@@ -87,6 +89,7 @@ Login_button.addEventListener("click", (e) => {
     body: JSON.stringify(UsrData),
   })
     .then((response) => {
+      console.log("cool");
       if (!response.ok) throw new Error("Login failed");
       return response.json();
     })
@@ -102,5 +105,3 @@ Login_button.addEventListener("click", (e) => {
     })
     .catch((error) => console.error("Error:", error));
 });
-
-
