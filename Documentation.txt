@@ -1,2 +1,0 @@
-
-Backend runs on port 8001 during development
