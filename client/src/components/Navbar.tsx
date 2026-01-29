@@ -6,7 +6,7 @@ import { RiSettings2Fill } from "react-icons/ri";
 
 export default function Navbar() {
   return (
-    <nav className="p-3 flex justify-between items-center bg-black text-white content-center sticky top-0 z-50">
+    <nav className="p-3 flex justify-between items-center nav-glass text-white content-center sticky top-0 z-0">
       <h1 className="logo">
         <span className="mx-2">PI</span>
         <span className="color  ">SYSTEM</span>
@@ -39,21 +39,29 @@ export default function Navbar() {
 export function Navbar2() {
   return (
     <>
-      <nav className="p-3 flex justify-between items-center bg-black text-white content-center">
-        <h1 className="logo">
-          <span className="mx-2">PI</span>
-          <span className="color  ">SYSTEM</span>
-        </h1>
+      <nav className="p-3 flex justify-between items-center  text-white content-center dm-sans mx-50">
+        <div className="inline-flex items-center gap-16 ">
+          <h1 className="text-2xl font-bold">
+            <span className="mx-2">PI</span>
+            <span className="color  ">SYSTEM</span>
+          </h1>
+
+          <div className="muted inline-flex gap-16 flex-row-reverse text-[14px] font-bold dm-sans">
+            
+            <span>IGRIS</span>
+            <span>DOCUMENTATION</span>
+          </div>
+        </div>
+
         <div className="flex flex-row justify-between gap-3 px-1 py-1 content-center">
-          <button className="border  bg-[#0da6f2] border-none p-0.5 px-2 text-[13px] font-bold rounded-xs">
+          <button className="border bg-[#0da6f2] hover:brightness-105 border-none p-0.5 px-2 text-[14px] font-bold rounded-xs">
             SIGN UP
           </button>
-          <button className="border   bg-[#0da6f2] border-none p-0.5 px-2 text-[13px] font-bold rounded-xs">
+          <button className="border  bg-[#0da6f2] hover:brightness-95 border-none p-0.5 px-2 text-[14px] font-bold rounded-xs">
             LOGIN
           </button>
         </div>
       </nav>
-      
     </>
   );
 }

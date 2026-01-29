@@ -1,21 +1,36 @@
 @import "tailwindcss";
 
 .color {
-    color:#0da6f2
+  color: #0da6f2;
 }
-
-.logo {
-    font-size: 1.5rem;
-}
-
 
 .height100vh {
-    height: 100vh;
+  height: 100vh;
 }
-
 
 .dm-sans {
   font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.roboto-slab {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.jetbrains-mono {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
