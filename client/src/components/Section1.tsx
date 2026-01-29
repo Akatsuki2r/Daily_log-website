@@ -5,7 +5,7 @@ export default function Section1() {
   return (
     <>
       <hr className="border-gray-700 border"></hr>
-      <section className="text-white bg-black p-28 w-full flex flex-col items-center h-[90vh]">
+      <section className="text-white bg-[#090606] p-28 w-full flex flex-col items-center h-[90vh]">
         <div className="flex flex-col gap-1.5 w-fit items-center ">
           <div>
             <span className="inline-flex gap-3 flex-row items-center">

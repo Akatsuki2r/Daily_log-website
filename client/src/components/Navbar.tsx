@@ -42,7 +42,7 @@ export function Navbar2() {
       <nav className="p-3 flex justify-between items-center  text-white content-center dm-sans mx-50">
         <div className="inline-flex items-center gap-16 ">
           <h1 className="text-2xl font-bold">
-            <span className="mx-2">PI</span>
+            <span className="mx-2 tracking-tighter">PI</span>
             <span className="color  ">SYSTEM</span>
           </h1>
 
