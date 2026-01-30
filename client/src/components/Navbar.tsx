@@ -39,7 +39,7 @@ export default function Navbar() {
 export function Navbar2() {
   return (
     <>
-      <nav className="p-3 flex justify-between items-center  text-white content-center dm-sans mx-50">
+      <nav className="px-50 p-3 flex justify-between items-center  text-white content-center dm-sans bg-black">
         <div className="inline-flex items-center gap-16 ">
           <h1 className="text-2xl font-bold">
             <span className="mx-2 tracking-tighter text-shadow-[#ffffff]">PI</span>

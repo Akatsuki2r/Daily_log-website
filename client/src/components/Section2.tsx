@@ -5,7 +5,7 @@ export default function Section2() {
   return (
     <>
       <hr className=" border-gray-600"></hr>
-      <section className=" px-6 py-32 text-center border-t border-border-dark h-[90vh] overflow-hidden ">
+      <section className=" px-6 py-32 text-center border-t border-border-dark h-[90vh] overflow-hidden bg-[#060608]">
         <div className="flex flex-col items-center mb-20">
           <h1 className="text-white text-5xl md:text-[4rem] font-black uppercase tracking-tighter  mb-6 space-grotesk">
             READY TO LOCK IN?

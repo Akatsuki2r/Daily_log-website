@@ -5,7 +5,7 @@ import Section2 from "../components/Section2";
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-y-hidden">
       <Navbar2 />
       <hr className="border-gray-700 border" />
       <WelcomeMain />
