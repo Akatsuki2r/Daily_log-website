@@ -1,9 +1,10 @@
-import Home from "./Pages/WelcomePage";
-import './App.css'
+//import Home from "./Pages/WelcomePage";
+import SignUp from "./Pages/RegisterPage";
+import "./App.css";
 function App() {
   return (
-    <div className="min-h-screen bg-[#080c0e]">
-      <Home />;
+    <div className="min-h-screen">
+      <SignUp />
     </div>
   );
 }

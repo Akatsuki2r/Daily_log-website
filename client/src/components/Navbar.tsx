@@ -42,8 +42,8 @@ export function Navbar2() {
       <nav className="p-3 flex justify-between items-center  text-white content-center dm-sans mx-50">
         <div className="inline-flex items-center gap-16 ">
           <h1 className="text-2xl font-bold">
-            <span className="mx-2 tracking-tighter">PI</span>
-            <span className="color  ">SYSTEM</span>
+            <span className="mx-2 tracking-tighter text-shadow-[#ffffff]">PI</span>
+            <span className="color  text-shadow-[#0da6f2]">SYSTEM</span>
           </h1>
 
           <div className="muted inline-flex gap-16 flex-row-reverse text-[14px] font-bold dm-sans">
@@ -64,4 +64,17 @@ export function Navbar2() {
       </nav>
     </>
   );
+}
+
+export function Navbar3() {
+  return (
+    <>
+    <nav className="p-3 flex justify-between items-center  text-white content-center dm-sans mx-10">
+          <h1 className="text-2xl font-bold inline-flex">
+            <span className="mx-2 tracking-tighter text-shadow-[#ffffff]">PI</span>
+            <span className="color  text-shadow-[#0da6f2]">SYSTEM</span>
+          </h1>
+      </nav>
+    </>
+  )
 }

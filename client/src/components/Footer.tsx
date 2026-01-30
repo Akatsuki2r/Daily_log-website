@@ -4,7 +4,7 @@ import "../index.css";
 export default function Footer() {
   return (
     <footer className="border-t border-border-dark bg-background-dark px-6 md:px-20 py-16">
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-300">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2">
             <div className="flex items-center gap-3 text-primary mb-6">
