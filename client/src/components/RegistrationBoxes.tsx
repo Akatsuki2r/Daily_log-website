@@ -4,6 +4,7 @@ import { FaApple } from "react-icons/fa6";
 import { useState } from "react";
 import API from "../API";
 
+
 export default function SignUpBox() {
   const [NameValue, setNameValue] = useState("");
   const [EmailValue, setEmailValue] = useState("");
@@ -14,14 +15,12 @@ export default function SignUpBox() {
     email: EmailValue,
     password: PasswordValue,
   };
-
+  
   const submitRequest = async () => {
     try {
-      await API.post("/v1/authentication/SignUp", {
-        User,
-      });
+      await API.post("/v1/authentication/SignUp", User);
       console.log(User);
-    } catch (err) {
+    } catch (err){
       console.error(`Error: ${err}`);
     }
   };

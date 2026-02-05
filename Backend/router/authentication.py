@@ -31,7 +31,7 @@ oauth2_bearer = OAuth2PasswordBearer(tokenUrl='v1/authentication/token')
 
 @router.post('/SignUp')
 async def create_user(usrdata: Users, db: Session = Depends(get_db)):
-    hashed_password = passworrd_hashing(usrdata.hashed_password)
+    hashed_password = passworrd_hashing(usrdata.password)
 
     new_user = User(
         username=usrdata.username,
@@ -58,7 +58,7 @@ async def user_auth(usrcredentials: UserLogin, db: Session = Depends(get_db)):
     
     # 2. Verify password using the Argon2 instance
     try:
-        ph.verify(user.hashed_password, usrcredentials.password)
+        ph.verify(user.hashed_password, usrcredentials.hashed_password)
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid credentials")
         

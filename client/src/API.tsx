@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+
 const API = axios.create({
-  baseURL: 'http://localhost:5173', // Your API's base URL
+  baseURL: 'http://127.0.0.1:8000', // Your API's base URL
   headers: {
     'Authorization': 'Bearer YOUR_AUTH_TOKEN',
     'Content-Type': 'application/json'
@@ -9,3 +10,7 @@ const API = axios.create({
 });
 
 export default API;
+
+
+
+

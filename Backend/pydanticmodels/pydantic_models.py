@@ -8,11 +8,11 @@ from pydantic import BaseModel
 class Users(BaseModel):
     username: str
     email: str
-    hashed_password: str
+    password: str
     
 class UserLogin(BaseModel):
     email: str
-    password: str
+    hashed_password: str
     
     
     
