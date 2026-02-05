@@ -56,10 +56,11 @@ export function Navbar2() {
                 SIGN UP
               </button>
             </Link>
-
-            <button className="border  bg-[#0da6f2] hover:brightness-95 border-none p-0.5 px-2 text-[14px] font-bold rounded-xs">
-              LOGIN
-            </button>
+            <Link to={"/Login"}>
+              <button className="border  bg-[#0da6f2] hover:brightness-95 border-none p-0.5 px-2 text-[14px] font-bold rounded-xs">
+                LOGIN
+              </button>
+            </Link>
           </div>
         </nav>
       </div>
@@ -81,5 +82,21 @@ export function Navbar3() {
         </nav>
       </div>
     </>
+  );
+}
+
+import { FaArrowLeft } from "react-icons/fa";
+
+export function Navbar4() {
+  return (
+    <div>
+      <nav className="p-2 flex justify-between items-center  text-white content-center dm-sans mx-7 mb-45 mt-15 ">
+        <Link to={"/"}>
+          <button className="border border-white/30 rounded-full p-3 bg-white/0 backdrop-blur-sm shadow-sm transition-all hover:bg-white/10 active:scale-95">
+            <FaArrowLeft />
+          </button>
+        </Link>
+      </nav>
+    </div>
   );
 }

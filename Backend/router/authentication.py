@@ -58,7 +58,7 @@ async def user_auth(usrcredentials: UserLogin, db: Session = Depends(get_db)):
     
     # 2. Verify password using the Argon2 instance
     try:
-        ph.verify(user.hashed_password, usrcredentials.hashed_password)
+        ph.verify(user.hashed_password, usrcredentials.password)
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid credentials")
         

@@ -12,7 +12,7 @@ class Users(BaseModel):
     
 class UserLogin(BaseModel):
     email: str
-    hashed_password: str
+    password: str
     
     
     
