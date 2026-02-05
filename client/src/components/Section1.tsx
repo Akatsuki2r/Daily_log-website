@@ -1,30 +1,32 @@
 import "../index.css";
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Section1() {
   return (
     <>
-      <hr className="border-gray-700 border"></hr>
-      <section className="text-white bg-[#090606] p-28 w-full flex flex-col items-center h-[90vh]">
-        <div className="flex flex-col gap-1.5 w-fit items-center ">
-          <div>
-            <span className="inline-flex gap-3 flex-row items-center">
-              <span className="border-[0.9px] border-[#0da6f2] h-0 w-7 "></span>
-              <h3 className="text-[14px] font-bold dm-sans text-[#0da6f2] my-2">
-                CORE MODULES
-              </h3>
-            </span>
-            <h1 className="font-bold text-5xl dm-sans">SYSTEM ARCHITECTURE</h1>
-            <p className="text-gray-400 text-[1rem] max-w-xl my-1.5">
-              P.I.S is designed to bring out the best in it's user.<br></br> It
-              won't just track progress but enforce it through its features and
-              engaging interface.{" "}
-            </p>
-          </div>
+      <div>
+        <hr className="border-gray-700 border"></hr>
+        <section className="text-white bg-[#090606] p-28 w-full flex flex-col items-center h-[90vh]">
+          <div className="flex flex-col gap-1.5 w-fit items-center ">
+            <div>
+              <span className="inline-flex gap-3 flex-row items-center">
+                <span className="border-[0.9px] border-[#0da6f2] h-0 w-7 "></span>
+                <h3 className="text-[14px] font-bold dm-sans text-[#0da6f2] my-2">
+                  CORE MODULES
+                </h3>
+              </span>
+              <h1 className="font-bold text-5xl dm-sans">
+                SYSTEM ARCHITECTURE
+              </h1>
+              <p className="text-gray-400 text-[1rem] max-w-xl my-1.5">
+                P.I.S is designed to bring out the best in it's user.<br></br>{" "}
+                It won't just track progress but enforce it through its features
+                and engaging interface.{" "}
+              </p>
+            </div>
 
-          <div className="flex flex-wrap">
-            <div className="flex">
-              <Router>
+            <div className="flex flex-wrap">
+              <div className="flex">
                 <div>
                   <Link to="">
                     <span className=" border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex flex-col p-6 my-4.75">
@@ -121,19 +123,17 @@ export default function Section1() {
                       <span className="h-27 w-27 text-white">#</span>
                       <h1 className="font-bold my-2">THE ROADMAP</h1>
                       <p className="text-gray-400 text-[0.9rem]">
-                        Visual truth of progress and other aspects of improvement.
+                        Visual truth of progress and other aspects of
+                        improvement.
                       </p>
                     </span>
                   </Link>
                 </div>
-                <Routes>
-                  <Route path="" element></Route>
-                </Routes>
-              </Router>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }
