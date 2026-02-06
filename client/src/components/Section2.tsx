@@ -15,9 +15,9 @@ export default function Section2() {
               Initialize your Personal Intelligence System today. Join the
               network of 50k+ deep thinkers building their Lock in Arc of 2026.
               <br></br>
-              <p className="font-bold text-shadow-cyan-100">
+              <span className="font-bold text-shadow-cyan-100">
                 Be the best version of yourself .
-              </p>
+              </span>
             </p>
 
             <button className="bg-[#0da6f2] text-white w-40 h-12 dm-sans text-[15px] uppercase font-bold">

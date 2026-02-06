@@ -5,11 +5,13 @@ import App from "./App.tsx";
 import SignUp from "./Pages/RegisterPage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginBox } from "./components/RegistrationBoxes.tsx";
+import Home from "./Pages/Home.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/SignUpPage", element: <SignUp /> },
   { path: "/Login", element: <LoginBox /> },
+  { path: "/Home", element: <Home /> },
 ]);
 
 createRoot(document.getElementById("root")!).render(

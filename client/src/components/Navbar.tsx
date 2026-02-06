@@ -1,32 +1,80 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../index.css";
-import { IoIosSearch } from "react-icons/io";
-import { IoIosNotifications } from "react-icons/io";
+import { IoIosSearch, IoIosNotifications } from "react-icons/io";
 import { RiSettings2Fill } from "react-icons/ri";
+import { HiMenu, HiX } from "react-icons/hi";
+import "../index.css";
+
 
 export default function Navbar() {
-  return (
-    <div>
-      <nav className="p-3 flex justify-between items-center nav-glass text-white content-center sticky top-0 z-0">
-        <h1 className="logo">
-          <span className="mx-2">PI</span>
-          <span className="color  ">SYSTEM</span>
-        </h1>
+  const [open, setOpen] = useState(false);
 
-        <div className="flex flex-row justify-between gap-15 m content-center">
-          <Link to="/Nodes">Nodes</Link>
-          <Link to="/Sessions">Sessions</Link>
-          <Link to="/Decision_Log">Decision_Log</Link>
-          <Link to="/Dashboard">Dashboard</Link>
+  const links = [
+    { name: "Nodes", path: "/Nodes" },
+    { name: "Sessions", path: "/Sessions" },
+    { name: "Decision Log", path: "/Decision_Log" },
+    { name: "Dashboard", path: "/Dashboard" },
+  ];
+
+  return (
+    <>
+    <Navbar3/>
+      {/* 1. Static Control Column (Logo + Menu Button) */}
+      <div className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center py-6 bg-black/40 backdrop-blur-md border-r border-white/10 z-60">
+        {/* Menu Button directly under Logo */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="p-3 text-3xl text-white hover:bg-white/10 rounded-xl transition-all duration-300"
+        >
+          {open ? <HiX /> : <HiMenu />}
+        </button>
+
+        {/* Vertical Socials/Icons at Bottom */}
+        <div className="mt-auto flex flex-col gap-6 text-xl text-gray-400 pb-8">
+          <RiSettings2Fill className="hover:text-white cursor-pointer" />
+          <span className="text-center font-bold">#</span>
         </div>
-        <div className="flex flex-row justify-between gap-4.5 py-1 content-center mx-2.5">
-          <IoIosSearch />
-          <IoIosNotifications />
-          <RiSettings2Fill />
-          <span>#</span>
+      </div>
+
+      {/* 2. Reveal Overlay */}
+      <div
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 z-40 
+        ${open ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      />
+
+      {/* 3. Left Reveal Sidebar (Offset by the Control Column) */}
+      <aside
+        className={`fixed top-0 left-20 h-screen w-64 bg-black/90 backdrop-blur-xl text-white 
+        transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-50 border-r border-white/10
+        ${open ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"}`}
+      >
+        <div className="p-8 pt-24 flex flex-col h-full">
+          <h2 className="text-xs font-bold tracking-[0.2em] text-blue-500 uppercase mb-8">
+            Navigation
+          </h2>
+
+          <nav className="flex flex-col gap-6">
+            {links.map((link) => (
+              <Link
+                key={link.path}
+                onClick={() => setOpen(false)}
+                to={link.path}
+                className="text-lg font-light tracking-wide hover:text-blue-400 hover:translate-x-2 transition-all duration-300 flex items-center gap-4"
+              >
+                <span className="h-[1px] w-4 bg-white/20"></span>
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="mt-auto flex gap-6 text-2xl text-gray-500 border-t border-white/10 pt-6">
+            <IoIosSearch className="hover:text-white cursor-pointer" />
+            <IoIosNotifications className="hover:text-white cursor-pointer" />
+          </div>
         </div>
-      </nav>
-    </div>
+      </aside>
+    </>
   );
 }
 

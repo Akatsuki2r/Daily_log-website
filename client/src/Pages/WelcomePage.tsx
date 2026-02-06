@@ -3,7 +3,7 @@ import { Navbar2 } from "../components/Navbar";
 import Section1 from "../components/Section1";
 import Section2 from "../components/Section2";
 
-export default function Home() {
+export default function Welcome() {
   return (
     <div className="overflow-y-hidden">
       <Navbar2 />
