@@ -5,7 +5,6 @@ import { RiSettings2Fill } from "react-icons/ri";
 import { HiMenu, HiX } from "react-icons/hi";
 import "../index.css";
 
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
@@ -18,9 +17,9 @@ export default function Navbar() {
 
   return (
     <>
-    <Navbar3/>
+      <Navbar3 />
       {/* 1. Static Control Column (Logo + Menu Button) */}
-      <div className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center py-6 bg-black/40 backdrop-blur-md border-r border-white/10 z-60">
+      <div className="fixed top-0 left-0 h-screen w-20 flex flex-col justify-between   items-center py-6 bg-black/40 backdrop-blur-md border-r border-white/10 z-60">
         {/* Menu Button directly under Logo */}
         <button
           onClick={() => setOpen(!open)}
@@ -30,23 +29,20 @@ export default function Navbar() {
         </button>
 
         {/* Vertical Socials/Icons at Bottom */}
-        <div className="mt-auto flex flex-col gap-6 text-xl text-gray-400 pb-8">
-          <RiSettings2Fill className="hover:text-white cursor-pointer" />
-          <span className="text-center font-bold">#</span>
-        </div>
+        <span className="text-center font-bold text-xl text-gray-400 pb-4">#</span>
       </div>
 
       {/* 2. Reveal Overlay */}
       <div
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 z-40 
+        className={`fixed inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-500 z-40 
         ${open ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       />
 
       {/* 3. Left Reveal Sidebar (Offset by the Control Column) */}
       <aside
-        className={`fixed top-0 left-20 h-screen w-64 bg-black/90 backdrop-blur-xl text-white 
-        transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-50 border-r border-white/10
+        className={`fixed top-0 left-20 h-screen w-64 bg-black/40 backdrop-blur-md   text-white 
+        transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-50
         ${open ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"}`}
       >
         <div className="p-8 pt-24 flex flex-col h-full">
@@ -62,13 +58,17 @@ export default function Navbar() {
                 to={link.path}
                 className="text-lg font-light tracking-wide hover:text-blue-400 hover:translate-x-2 transition-all duration-300 flex items-center gap-4"
               >
-                <span className="h-[1px] w-4 bg-white/20"></span>
+                <span className="h-px w-4 bg-white/20"></span>
                 {link.name}
               </Link>
             ))}
           </nav>
 
           <div className="mt-auto flex gap-6 text-2xl text-gray-500 border-t border-white/10 pt-6">
+            <div className="mt-auto flex flex-col gap-6 text-xl text-gray-400 pb-8">
+              <RiSettings2Fill className="hover:text-white cursor-pointer" />
+              
+            </div>
             <IoIosSearch className="hover:text-white cursor-pointer" />
             <IoIosNotifications className="hover:text-white cursor-pointer" />
           </div>
@@ -120,12 +120,14 @@ export function Navbar3() {
   return (
     <>
       <div>
-        <nav className="p-3 flex justify-between items-center  text-white content-center dm-sans mx-10">
-          <h1 className="text-2xl font-bold inline-flex">
+        <nav className="pl-10 pt-3 pb-2 flex justify-between items-center  text-white content-center dm-sans mx-10">
+          <h1 className="text-[28px] font-bold inline-flex">
             <span className="mx-2 tracking-tighter text-shadow-[#ffffff]">
               PI
             </span>
-            <span className="color  text-shadow-[#0da6f2]">SYSTEM</span>
+            <div className="drop-shadow-[0_0_100px_rgba(46,231,255,1)]">
+              <span className="color ">SYSTEM</span>
+            </div>
           </h1>
         </nav>
       </div>

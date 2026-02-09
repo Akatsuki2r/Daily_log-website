@@ -5,6 +5,10 @@ export default function Main() {
   return (
     <main>
       <Navbar />
+      <div>
+        <span>user_id:</span>
+        <span></span>
+      </div>
     </main>
   );
 }
