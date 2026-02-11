@@ -11,12 +11,10 @@ class Users(BaseModel):
     password: str
     
 class UserLogin(BaseModel):
-    email: str
+    username: str
     password: str
     
-class UserName(BaseModel):
-    username: str
-    
+
     
 class Token(BaseModel):
     acces_token: str

@@ -35,6 +35,6 @@ class User(Base):
     #email = Column(String, unique=True, nullable=False)
     #password_hash = Column(Text, nullable=False)
 
-    def __rep__(self) -> str:
+    def __repr__(self) -> str:
         return f'<User(id={self.id}, username={self.username}, email={self.email}, hashed_password={self.hashed_password})>'
         

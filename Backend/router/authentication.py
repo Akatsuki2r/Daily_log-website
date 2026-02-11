@@ -42,7 +42,9 @@ async def create_user(usrdata: Users, db: Session = Depends(get_db)):
     )
     
     access_token = create_access_token(
-        data={"sub": usrdata.email},
+        data={
+            "sub": usrdata.username,
+              },
         expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     )
     db.add(new_user)
@@ -61,7 +63,7 @@ async def user_auth(
     usrcredentials: UserLogin,
     db: Session = Depends(get_db)
 ):
-    stmt = select(User).where(User.email == usrcredentials.email)
+    stmt = select(User).where(User.username == usrcredentials.username)
     user = db.scalar(stmt)
 
     if not user:
@@ -73,7 +75,8 @@ async def user_auth(
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     access_token = create_access_token(
-        data={"sub": usrcredentials.email},
+        data={"sub": usrcredentials.username},
+        
         expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     )
 
@@ -82,6 +85,3 @@ async def user_auth(
         "token_type": "bearer"
     }
 
-@router.get("/me")
-def me(current_user: User = Depends(get_current_user)):
-    return current_user

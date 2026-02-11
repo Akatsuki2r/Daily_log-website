@@ -61,15 +61,40 @@ def get_current_user(
             SECRET_KEY,
             algorithms=[ALGORITHM]
         )
-        email = payload.get("sub")
-        if email is None:
+        usrname = payload.get("sub")
+        if usrname is None:
             raise HTTPException(status_code=401)
 
     except JWTError:
         raise HTTPException(status_code=401)
 
-    user = db.scalar(select(User).where(User.email == email))
+    user = db.scalar(select(User).where(User.username == usrname))
     if not user:
         raise HTTPException(status_code=401)
 
     return user
+
+
+def get_username(
+    token: Annotated[str, Depends(oauth2_bearer)],
+    db: Session = Depends(get_db)
+):
+    
+    try:
+        payload = jwt.decode(
+            token,
+            SECRET_KEY,
+            algorithms=[ALGORITHM]
+        )
+        usrname = payload.get("sub")
+        if usrname is None:
+            raise HTTPException(status_code=401)
+
+    except JWTError:
+        raise HTTPException(status_code=401)
+    
+    usrname = db.scalar(select(User.username).where(User.username == usrname))
+    if not usrname:
+        raise HTTPException(status_code=401)
+    
+    return usrname

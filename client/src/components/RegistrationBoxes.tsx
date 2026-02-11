@@ -21,10 +21,12 @@ export default function SignUpBox() {
 
   const submitSignUpRequest = async () => {
     try {
-      await API.post("v1/authentication/SignUp", UserCreate);
+      const res = await API.post("/v1/authentication/SignUp", UserCreate);
+      localStorage.setItem("access_token", res.data.access_token); 
+
       navigate("/Home");
     } catch (err) {
-      console.error(`Error: ${err}`);
+      console.error(err);
     }
   };
 
@@ -86,11 +88,11 @@ export default function SignUpBox() {
 }
 
 export function LoginBox() {
-  const [EmailValue, setEmailValue] = useState("");
+  const [UsernameValue, setEmailValue] = useState("");
   const [PasswordValue, setPasswordValue] = useState("");
 
   const UserAuthorize = {
-    email: EmailValue,
+    username: UsernameValue,
     password: PasswordValue,
   };
 
@@ -98,7 +100,8 @@ export function LoginBox() {
 
   const submitLoginRequest = async () => {
     try {
-      await API.post("v1/authentication/Login", UserAuthorize);
+      const res = await API.post("v1/authentication/Login", UserAuthorize);
+      localStorage.setItem("access_token", res.data.access_token); 
       navigate("/Home");
     } catch (err) {
       alert(`Failed ${err}`);
@@ -112,16 +115,16 @@ export function LoginBox() {
       <div className="flex items-center justify-center bg-black ">
         <div className="w-105 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 text-white shadow-xl">
           <h1 className="text-2xl font-semibold mb-1 text-[#0da6f2]">
-            Welcome Player
+            Welcomeback Player
           </h1>
           <p className="text-sm text-white/70 mb-6">Continue your journey.</p>
 
           <div className="flex flex-col gap-4">
             <input
-              type="email"
-              value={EmailValue}
+              type="text"
+              value={UsernameValue}
               onChange={(e) => setEmailValue(e.target.value)}
-              placeholder="Email"
+              placeholder="Username"
               className="h-10 rounded-md bg-transparent border border-white/20 px-3 text-sm placeholder-white/50 focus:outline-none focus:border-white/40"
             />
             <input

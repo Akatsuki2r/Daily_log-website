@@ -1,13 +1,29 @@
 import "../index.css";
-import Navbar from "./Navbar";
+import API from "../API";
+import { useEffect, useState } from "react";
 
 export default function Main() {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const res = await API.get("/v1/user/username");
+
+        setUsername(res.data.username);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchUsername();
+  }, []);
+
   return (
-    <main>
-      <Navbar />
+    <main className="flex items-center justify-center">
       <div>
-        <span>user_id:</span>
-        <span></span>
+        <span className="text-white">Username: </span>
+        <span className="text-white">{username}</span>
       </div>
     </main>
   );
