@@ -14,8 +14,12 @@ from passlib.context import CryptContext
 import datetime
 from datetime import timedelta, datetime, timezone
 from jwt.exceptions import InvalidTokenError
+import os
+from dotenv import load_dotenv, find_dotenv
 
+env_path = find_dotenv()
 
+load_dotenv(env_path)
 
 
 
@@ -48,6 +52,8 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     expire = datetime.now(timezone.utc) + (expires_delta or timedelta(minutes=15))
     to_encode.update({"exp": expire})
 
+    if SECRET_KEY is None or ALGORITHM is None:
+        raise ValueError("Missing required environment variables: SECRET_KEY or ALGORITHM")
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
