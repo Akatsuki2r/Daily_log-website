@@ -35,3 +35,4 @@ argon2-cffi-bindings
 pyjwt
 pwdlib
 pydantic-settings
+joppy
