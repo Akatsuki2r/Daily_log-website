@@ -1,4 +1,4 @@
-#This is where all our code about different notes platforms is gonna be 
+#* This is where all our code about different notes platforms is gonna be 
 
 from joppy.client_api import ClientApi
 
@@ -12,3 +12,6 @@ notes = jopl_api.get_all_notes(fields="title,id,parent_id,body")
 
 for note in notes:
     print(note)
+    
+    
+#For more info https://github.com/marph91/joppy?tab=readme-ov-file
