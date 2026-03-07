@@ -1,33 +1,17 @@
-
 import { Link } from "react-router-dom";
-import { IoIosSearch, IoIosNotifications } from "react-icons/io";
-import { RiSettings2Fill } from "react-icons/ri";
+/* import { IoIosNotifications } from "react-icons/io";
+import { RiSettings2Fill } from "react-icons/ri"; */
 import "../index.css";
 
 export default function Navbar() {
   return (
-    <nav className="p-3 flex justify-between items-center nav-glass text-white content-center sticky top-0 z-0">
-      <h1 className="logo">
-        <span className="mx-2">PI</span>
-        <span className="color  ">SYSTEM</span>
-      </h1>
-      
-        <div className="flex flex-row justify-between gap-15 m content-center">
-          <Link to="/Nodes">Nodes</Link>
-          <Link to="/Sessions">Sessions</Link>
-          <Link to="/Decision_Log">Decision_Log</Link>
-          <Link to="/Dashboard">Dashboard</Link>
-        </div>
-        <div className="flex flex-row justify-between gap-4.5 py-1 content-center mx-2.5">
-          <IoIosSearch />
-          <IoIosNotifications />
-          <RiSettings2Fill />
-          <span>#</span>
-        </div>
-
-        
-
-      
+    <nav className="p-3 flex justify-center items-center nav-glass text-white content-center sticky  top-0 z-0 pb-10 pt-10">
+      <div className="flex flex-row justify-between gap-15 m text-[#20b2fb] content-center w-116">
+        <Link to="/Nodes">Nodes</Link>
+        <Link to="/Sessions">Sessions</Link>
+        <Link to="/Decision_Log">Decision Log</Link>
+        <Link to="/Dashboard">Dashboard</Link>
+      </div>
     </nav>
   );
 }

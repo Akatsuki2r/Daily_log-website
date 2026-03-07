@@ -22,7 +22,7 @@ export default function SignUpBox() {
   const submitSignUpRequest = async () => {
     try {
       const res = await API.post("/v1/authentication/SignUp", UserCreate);
-      localStorage.setItem("access_token", res.data.access_token); 
+      localStorage.setItem("access_token", res.data.access_token);
 
       navigate("/Home");
     } catch (err) {
@@ -101,7 +101,7 @@ export function LoginBox() {
   const submitLoginRequest = async () => {
     try {
       const res = await API.post("v1/authentication/Login", UserAuthorize);
-      localStorage.setItem("access_token", res.data.access_token); 
+      localStorage.setItem("access_token", res.data.access_token);
       navigate("/Home");
     } catch (err) {
       alert(`Failed ${err}`);

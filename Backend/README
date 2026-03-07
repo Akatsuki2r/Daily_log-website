@@ -1,1 +1,4 @@
 Backend runs on Port 8000 during production
+
+
+Note: set the access tokens expiry time to 4320 which is 72hrs.

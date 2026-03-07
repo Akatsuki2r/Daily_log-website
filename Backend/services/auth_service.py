@@ -30,7 +30,7 @@ ph = PasswordHasher()
 #JWT
 SECRET_KEY = 'Jx8mQF7VvCqP0e1nZ6yLhK9sD2RrT5UO4B3WcA_iYHkN-MaEbpSfGdXw'
 ALGORITHM = 'HS256'
-ACCESS_TOKEN_EXPIRE_MINUTES = 35
+ACCESS_TOKEN_EXPIRE_MINUTES = 4320
 
 
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
