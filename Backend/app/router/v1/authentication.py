@@ -1,13 +1,13 @@
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
-from pydanticmodels.pydantic_models import *
-from services.auth_service import password_hashing, verify_password, ph
-from models.models import get_db, SessionLocal
-from models.models import User
+from app.schemas.pydantic_models import *
+from app.services.auth_service import password_hashing, verify_password, ph
+from app.models.models import get_db, SessionLocal
+from app.models.models import User
 from sqlalchemy import select
 from typing import Annotated
 from sqlalchemy.orm import Session
-from services.auth_service import *
+from app.services.auth_service import *
 
 router = APIRouter(
     prefix="/v1/authentication",

@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from pydanticmodels.pydantic_models import *
+from app.schemas.pydantic_models import *
 from fastapi import Depends
-from services.auth_service import *
-from models.models import User
+from app.services.auth_service import *
+from app.models.models import User
 
 router = APIRouter(
     prefix="/v1",

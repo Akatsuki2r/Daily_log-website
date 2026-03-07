@@ -2,10 +2,10 @@ import sqlalchemy as sa
 from sqlalchemy import create_engine, select, String, Integer
 from sqlalchemy.orm import Session, declarative_base, Mapped, mapped_column, relationship
 from sqlalchemy.engine import URL
-from pydanticmodels.pydantic_models import *
+from app.schemas.pydantic_models import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database.database import url_object
+from app.database.database import url_object
 
 
 engine =  sa.create_engine(url_object, echo=True)

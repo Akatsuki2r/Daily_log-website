@@ -1,9 +1,9 @@
 from argon2 import PasswordHasher
 from fastapi import HTTPException, Depends
 from fastapi import  HTTPException, Depends
-from pydanticmodels.pydantic_models import *
-from models.models import get_db
-from models.models import User
+from app.schemas.pydantic_models import *
+from app.models.models import get_db
+from app.models.models import User
 from sqlalchemy import select
 from typing import Annotated
 from sqlalchemy.orm import Session

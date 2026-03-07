@@ -1,10 +1,11 @@
 from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
 
-from models.models import Base, engine, SessionLocal, get_db, Session
-from models.models import User
-from pydanticmodels.pydantic_models import *
-from router import  authentication, user_router
+from app.router.v1 import user_router
+from app.models.models import Base, engine, SessionLocal, get_db, Session
+from app.models.models import User
+from app.schemas.pydantic_models import *
+from app.router.v1 import  authentication
 
 
 app = FastAPI()
