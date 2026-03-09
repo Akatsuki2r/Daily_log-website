@@ -2,3 +2,6 @@ Backend runs on Port 8000 during production
 
 
 Note: set the access tokens expiry time to 4320 which is 72hrs.
+
+Rust analyzer workspace error: 
+    Go to settings and type linked projects then click edit settings.json and add this "Backend/Pipeline/Cargo.toml" to this  "rust-analyzer.linkedProjects": [].

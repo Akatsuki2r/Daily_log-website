@@ -1,0 +1,12 @@
+The core purpose of the pipeline is to clean and shape data using Serde and other necessary tools
+
+Notes data cleansing chain:
+    Raw JSON
+        ↓
+    Serde parses
+        ↓
+    Rust struct
+        ↓
+    Cleaning function
+        ↓
+    ML-ready struct
