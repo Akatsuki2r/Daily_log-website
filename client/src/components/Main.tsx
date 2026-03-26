@@ -2,7 +2,6 @@ import "../index.css";
 import API from "../API";
 import { useEffect, useState } from "react";
 
-
 export default function Main() {
   const [username, setUsername] = useState("");
 
@@ -10,167 +9,88 @@ export default function Main() {
     const fetchUsername = async () => {
       try {
         const res = await API.get("/v1/user/username");
-
         setUsername(res.data.username);
       } catch (err) {
         console.error(err);
       }
     };
-
     fetchUsername();
   }, []);
 
-  let hour = 0;
-  let minute = 0;
-  let second = 0;
-  let streak = 0;
-  let task_1;
-  let task_2;
-  let task_3;
-  let xp_gain_from_task;
-  let status_of_task;
   return (
-    <main className="flex flex-col px-40 gap-5">
-      <div className="flex items-center justify-center text-white">
-        <div className="w-full ">
-          <div className="flex flex-row  justify-between">
-            <span className="flex flex-row justify-between w-55 items-baseline">
-              {" "}
-              <span className="text-[14px] text-[#0da6f2]">
-                SYSTEM.ACCESS_GRANTED
-              </span>
-              <hr className="border-[#0da6f2] border[0.9px] w-8 bottom-9 " />
-            </span>
-
-            <span className="flex flex-row justify-center items-baseline text-[#0da6f2]  text-[14px]">
-              PRIMAL_SYNTHESIS V2.0.1
-            </span>
+    <main className="p-6 max-w-7xl mx-auto">
+      {/* Header Stats */}
+      <div className="mb-8">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+          <span className="text-accent text-xs uppercase tracking-widest">System Access Granted</span>
+        </div>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <p className="text-sm text-[rgba(255,255,255,0.5)]">USER_ID</p>
+            <h1 className="text-2xl font-bold text-white">{username || "Loading..."}</h1>
           </div>
-          <div className="flex flex-row justify-between w-full">
-            {" "}
-            <div className="flex flex-row">
-              <span className="flex-row text-3xl">
-                <span className="text-white">USER_ID: </span>
-                <span className="text-white">{username || "ID"}</span>
-              </span>
+          <div className="flex gap-3">
+            <div className="glass px-4 py-2 rounded-md">
+              <p className="text-[10px] text-[rgba(255,255,255,0.5)] uppercase">Session</p>
+              <p className="text-xl font-mono text-white">00:00:00</p>
             </div>
-            <div className="flex flex-row justify-between  pt-1 gap-2">
-              <span className="backdrop-blur-md bg-white/3  text-2xl flex flex-col justify-center items-center border-[0.1px] py-0.5 px-2 border-white/10 uppercase">
-                <p className="text-gray-400 text-[10px]">session_hours</p>
-                <span className="flex flex-row gap-1">
-                  <span>{hour}</span>:<span>{minute}</span>:
-                  <span>{second}</span>
-                </span>
-              </span>
-              <span className="text-[27px] border-[0.1px] py-0.5 px-6 flex flex-col justify-center items-center border-white/10 backdrop-blur-md bg-white/3 ">
-                <p className="text-gray-400 text-[10px]">STREAK</p>
-                {streak}
-              </span>
+            <div className="glass px-4 py-2 rounded-md">
+              <p className="text-[10px] text-[rgba(255,255,255,0.5)] uppercase">Streak</p>
+              <p className="text-xl font-mono text-accent">0</p>
             </div>
           </div>
         </div>
       </div>
 
-
-
-      {/* SHARP-EDGED MINIMAL GLASS PROTOCOL TABLE */}
-      <div className="w-60 max-w-md bg-white/3 backdrop-blur-md border border-white/10 p-8 shadow-2xl">
-        <h2 className="text-white/40 uppercase tracking-[0.3em] text-[10px] font-bold mb-8">
-          Current Tasks
-        </h2>
-
-        <div className="flex flex-col">
-          {/* Row 1 */}
-          <div className="flex items-start gap-2 py-2.5 border-b border-white/5">
-            <div className="w-2.5 h-2.5 rounded-full border border-cyan-400 mt-1 shrink-0" />
-            <div className="flex flex-col">
-              <span className="text-white text-lg font-medium leading-none">
-                {task_1 || "Task 1"}
-              </span>
-              <span className="text-cyan-400 text-[9px] font-black uppercase mt-2 tracking-widest">
-                {status_of_task || "unknown"} ({xp_gain_from_task || "...xp"})
-              </span>
-            </div>
-          </div>
-
-          {/* Row 2 */}
-          <div className="flex items-start gap-2 py-2.5 border-b border-white/5 ">
-            <div className="w-2.5 h-2.5 rounded-full border border-white/40 mt-1 shrink-0" />
-            <div className="flex flex-col">
-              <span className="text-white text-lg font-medium leading-none">
-                {task_2 || "Task 2"}
-              </span>
-              <span className="text-white/60 text-[9px] font-black uppercase mt-2 tracking-widest">
-                {status_of_task || "unknown"} ({xp_gain_from_task || "...xp"})
-              </span>
-            </div>
-          </div>
-
-          {/* Row 3 */}
-          <div className="flex items-start gap-2 py-2.5">
-            <div className="w-2.5 h-2.5 rounded-full border border-red-600 mt-1 shrink-0" />
-            <div className="flex flex-col">
-              <span className="text-white text-lg font-medium leading-none">
-                {task_3 || "Task 3"}
-              </span>
-              <span className="text-red-600 text-[9px] font-black uppercase mt-2 tracking-widest">
-                {status_of_task || "unknown"} ({xp_gain_from_task || "...xp"})
-              </span>
-            </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Current Tasks */}
+        <div className="glass p-6 rounded-lg">
+          <h2 className="text-[rgba(255,255,255,0.4)] text-xs uppercase tracking-widest font-bold mb-6">
+            Current Tasks
+          </h2>
+          <div className="space-y-4">
+            {[
+              { status: "active", color: "bg-accent" },
+              { status: "pending", color: "bg-[rgba(255,255,255,0.3)]" },
+              { status: "overdue", color: "bg-red-500" },
+            ].map((task, i) => (
+              <div key={i} className="flex items-start gap-3 pb-3 border-b border-[rgba(255,255,255,0.05)] last:border-0">
+                <div className={`w-2.5 h-2.5 rounded-full border-2 ${task.color.replace('bg-', 'border-')} mt-1.5`} />
+                <div>
+                  <p className="text-white font-medium">Task {i + 1}</p>
+                  <p className="text-xs text-[rgba(255,255,255,0.5)] uppercase">{task.status}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
 
-      {/* FULL-HEIGHT SYSTEM TERMINAL */}
-      <div className="flex-1 w-120 min-h-50 bg-black/40 backdrop-blur-md border border-white/5 relative font-mono flex flex-col">
-        {/* Left Side Accent Bar */}
-        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#0da6f2] shadow-[0_0_15px_rgba(13,166,242,0.3)]" />
-
-        <div className="p-6 flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center gap-2 mb-6 shrink-0">
-            <div className="w-1.5 h-1.5 bg-[#0da6f2] animate-pulse" />
-            <h3 className="text-[#0da6f2] text-[10px] font-black uppercase tracking-[0.3em]">
+        {/* System Log */}
+        <div className="glass p-6 rounded-lg">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></div>
+            <h2 className="text-accent text-xs uppercase tracking-widest font-bold">
               System Message Log
-            </h3>
+            </h2>
           </div>
-
-          {/* Message Area - Scrollable */}
-          <div className="flex-1 overflow-y-auto space-y-4 pr-4 custom-scrollbar">
-            {/* Entry 1 */}
-            <div className="flex gap-4 items-start">
-              <span className="text-white/10 text-[10px] mt-1 shrink-0">
-                [18:32]
-              </span>
-              <p className="text-red-500/80 text-[12px] leading-relaxed tracking-tight">
-                <span className="font-black mr-2 uppercase">Alert:</span>
-                Discipline Stat degrading due to missed protocol.
-              </p>
+          <div className="space-y-3 font-mono text-sm custom-scrollbar max-h-48 overflow-y-auto">
+            <div className="flex gap-3">
+              <span className="text-[rgba(255,255,255,0.2)] text-xs">[18:32]</span>
+              <p className="text-red-400">Alert: Discipline degrading</p>
             </div>
-
-            {/* Entry 2 */}
-            <div className="flex gap-4 items-start">
-              <span className="text-white/10 text-[10px] mt-1 shrink-0">
-                [18:35]
-              </span>
-              <p className="text-[#0da6f2]/80 text-[12px] leading-relaxed tracking-tight">
-                <span className="font-black mr-2 uppercase">System:</span>
-                Analyzing cognitive output variance...
-              </p>
+            <div className="flex gap-3">
+              <span className="text-[rgba(255,255,255,0.2)] text-xs">[18:35]</span>
+              <p className="text-accent">System: Analyzing cognitive output...</p>
             </div>
           </div>
-
-          {/* Terminal Input Line */}
-          <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-4 shrink-0">
-            <span className="text-[#0da6f2] text-[12px] font-black tracking-widest">
-              &gt;
-            </span>
+          <div className="mt-4 pt-4 border-t border-[rgba(255,255,255,0.05)] flex items-center gap-2">
+            <span className="text-accent text-sm">&gt;</span>
             <input
               type="text"
-              placeholder="ENTER_COMMAND..."
-              className="bg-transparent border-none outline-none text-white/80 text-[12px] w-full placeholder:text-white/10 placeholder:uppercase tracking-[0.2em]"
+              placeholder="Enter command..."
+              className="flex-1 bg-transparent border-none outline-none text-white/80 text-sm placeholder:text-white/10 uppercase"
             />
-            <div className="w-2 h-4 bg-[#0da6f2]/60 animate-pulse shrink-0" />
           </div>
         </div>
       </div>
@@ -180,19 +100,15 @@ export default function Main() {
 
 export function WelcomeMain() {
   return (
-    <>
-      <main className="flex flex-col items-center justify-center min-h-screen dm-sans text-center bg-[#080c0e] text-white ">
-        <h1 className="text-7xl md:text-8xl font-extrabold text-white leading-[0.95] gap-0">
-          UPGRADE YOUR
-          <br />
-          <span className="text-blue-500">THINKING</span>
-        </h1>
-
-        <p className="mt-4 text-gray-400 max-w-xl text-[1.1rem]">
-          The Personal Intelligence System is designed to replace motivation
-          with structured discipline.
-        </p>
-      </main>
-    </>
+    <main className="flex flex-col items-center justify-center min-h-[70vh] text-center px-6 bg-[#080c0e]">
+      <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 uppercase">
+        Upgrade Your
+        <br />
+        <span className="text-accent uppercase">Thinking</span>
+      </h1>
+      <p className="text-[rgba(255,255,255,0.6)] max-w-lg text-lg mb-8  capitalize">
+        The Personal Intelligence System is designed to replace motivation with structured discipline.
+      </p>
+    </main>
   );
 }
