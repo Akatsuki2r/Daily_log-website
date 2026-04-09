@@ -9,14 +9,14 @@ export default function Section2() {
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
           Ready to lock in?
         </h1>
-        <p className="text-[rgba(255,255,255,0.6)] mb-8">
-          Initialize your Personal Intelligence System today. Join thousands of deep thinkers building their best self.
+        <p className="text-[rgba(255,255,255,0.85)] mb-8">
+          Initialize your Personal Intelligence System today. Join thousands of deep thinkers building their best version they can be.
         </p>
         <Link
           to="/SignUpPage"
-          className="inline-block px-8 py-3 bg-[#0da6f2] text-white font-semibold rounded-md hover:bg-[#33b5f5] transition-colors"
+          className="inline-block px-8 py-3 bg-[#0da6f2]  rounded-md hover:bg-[#33b5f5] transition-colors"
         >
-          Start Now
+          <span className=" text-white font-semibold">Start Now</span>
         </Link>
       </div>
       <Footer />

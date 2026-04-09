@@ -23,7 +23,7 @@ export default function Section1() {
             <span className="w-8 h-px bg-accent"></span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">System Architecture</h1>
-          <p className="text-[rgba(255,255,255,0.6)] max-w-xl mx-auto">
+          <p className="text-[rgba(255,255,255,0.85)] max-w-xl mx-auto">
             P.I.S is designed to bring out the best in you. Track progress and enforce discipline through engaging features.
           </p>
         </div>

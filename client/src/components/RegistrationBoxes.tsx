@@ -32,7 +32,7 @@ export default function SignUpBox() {
         <h1 className="text-2xl font-bold text-white mb-1">
           Create Account
         </h1>
-        <p className="text-[rgba(255,255,255,0.5)] text-sm mb-6">Start your journey.</p>
+        <p className="text-[rgba(255,255,255,0.85)] text-sm mb-6">Start your journey.</p>
 
         <div className="space-y-4">
           <input
@@ -40,21 +40,21 @@ export default function SignUpBox() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Username"
-            className="w-full h-12 rounded-lg px-4 text-sm"
+            className="w-full h-12 rounded-lg px-4 text-sm text-white"
           />
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            className="w-full h-12 rounded-lg px-4 text-sm"
+            className="w-full h-12 rounded-lg px-4 text-sm text-white"
           />
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="w-full h-12 rounded-lg px-4 text-sm"
+                        placeholder="Password"
+            className="w-full h-12 rounded-lg px-4 text-sm text-white"
           />
 
           <button
@@ -72,10 +72,10 @@ export default function SignUpBox() {
         </div>
 
         <div className="flex gap-3">
-          <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2">
+          <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2 text-white">
             <FcGoogle className="text-lg" />
           </button>
-          <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2">
+          <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2 text-white">
             <FaApple className="text-lg" />
           </button>
         </div>
@@ -91,7 +91,7 @@ export function LoginBox() {
 
   const handleLogin = async () => {
     try {
-      const res = await API.post("v1/authentication/Login", { username, password });
+      const res = await API.post("v1/authentication/login", { username, password });
       localStorage.setItem("access_token", res.data.access_token);
       navigate("/Home");
     } catch (err) {
@@ -107,7 +107,7 @@ export function LoginBox() {
           <h1 className="text-2xl font-bold text-white mb-1">
             Welcome Back
           </h1>
-          <p className="text-[rgba(255,255,255,0.5)] text-sm mb-6">Continue your journey.</p>
+          <p className="text-[rgba(255,255,255,0.85)] text-sm mb-6">Continue your journey.</p>
 
           <div className="space-y-4">
             <input
@@ -115,14 +115,14 @@ export function LoginBox() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Username"
-              className="w-full h-12 rounded-lg px-4 text-sm"
+              className="w-full h-12 rounded-lg px-4 text-sm text-white bg-white/5 border border-white/10 placeholder:text-white/30"
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="w-full h-12 rounded-lg px-4 text-sm"
+              className="w-full h-12 rounded-lg px-4 text-sm text-white bg-white/5 border border-white/10 placeholder:text-white/30"
             />
 
             <button
@@ -140,10 +140,10 @@ export function LoginBox() {
           </div>
 
           <div className="flex gap-3">
-            <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2">
+            <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2 text-white">
               <FcGoogle className="text-lg" />
             </button>
-            <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2">
+            <button className="flex-1 h-12 btn-secondary rounded-lg flex items-center justify-center gap-2 text-white">
               <FaApple className="text-lg" />
             </button>
           </div>

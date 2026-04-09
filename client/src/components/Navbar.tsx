@@ -11,11 +11,28 @@ export default function Navbar() {
             <span className="text-white">PI</span>
             <span className="text-accent ml-1">SYSTEM</span>
           </Link>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[rgba(255,255,255,0.7)]">
-            <Link to="/Nodes" className="hover:text-accent transition-colors">Nodes</Link>
-            <Link to="/Sessions" className="hover:text-accent transition-colors">Sessions</Link>
-            <Link to="/Decision_Log" className="hover:text-accent transition-colors">Decision Log</Link>
-            <Link to="/Dashboard" className="hover:text-accent transition-colors">Dashboard</Link>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[rgba(255,255,255,0.85)]">
+            <Link to="/Nodes" className="hover:text-accent transition-colors">
+              Nodes
+            </Link>
+            <Link
+              to="/Sessions"
+              className="hover:text-accent transition-colors"
+            >
+              Sessions
+            </Link>
+            <Link
+              to="/Decision_Log"
+              className="hover:text-accent transition-colors"
+            >
+              Decision Log
+            </Link>
+            <Link
+              to="/Dashboard"
+              className="hover:text-accent transition-colors"
+            >
+              Dashboard
+            </Link>
           </div>
         </div>
       </div>
@@ -34,15 +51,17 @@ export function Navbar2() {
         <div className="flex items-center gap-4">
           <Link
             to="/Login"
-            className="px-4 py-2 text-sm font-medium text-[rgba(255,255,255,0.7)] hover:text-white transition-colors"
+            className="px-4 py-2  transition-colors border border-[#0da6f2] rounded-md glass"
           >
-            Login
+            <span className=" text-white hover:text-white text-sm font-medium">
+              Login
+            </span>
           </Link>
           <Link
             to="/SignUpPage"
-            className="px-4 py-2 bg-[#0da6f2] text-white text-sm font-semibold rounded-md hover:bg-[#33b5f5] transition-colors"
+            className="px-4 py-2 bg-[#0da6f2] font-semibold rounded-md hover:bg-[#33b5f5] transition-colors"
           >
-            Sign Up
+            <span className="text-white text-sm">Sign Up</span>
           </Link>
         </div>
       </div>
@@ -71,7 +90,7 @@ export function Navbar4() {
           to="/"
           className="p-2 rounded-full border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.05)] transition-colors"
         >
-          <FaArrowLeft className="w-4 h-4 text-[rgba(255,255,255,0.7)]" />
+          <FaArrowLeft className="w-4 h-4 text-[rgba(255,255,255,0.85)]" />
         </Link>
       </div>
     </nav>
