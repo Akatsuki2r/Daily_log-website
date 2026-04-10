@@ -101,3 +101,6 @@ Backend/app/
 - Early-stage data processing pipeline for Joplin notes
 - Uses Serde for serialization
 - Configurable via environment variables
+
+
+
