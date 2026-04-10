@@ -1,85 +1,46 @@
 import "../index.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div>
-      {" "}
-      <footer className="border-t border-border-dark bg-background-dark px-6 md:px-20 py-16">
-        <div className="mx-auto max-w-300">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
-            <div className="col-span-2">
-              <div className="flex items-center gap-3 text-primary mb-6">
-                <h2 className="text-white text-lg font-bold tracking-tighter uppercase">
-                  PIV SYSTEM
-                </h2>
-              </div>
-              <p className="text-[#5a6e78] text-sm max-w-xs leading-relaxed">
-                The definitive cognitive operating system for the modern
-                intellectual elite. Built for speed, privacy, and insight.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white text-[10px] font-black uppercase tracking-widest mb-6">
-                System
-              </h4>
-              <ul className="flex flex-col gap-4 text-xs text-[#9cb0ba]">
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Terminal Access
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Neural Mapping
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    System Logs
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    API Keys
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white text-[10px] font-black uppercase tracking-widest mb-6">
-                Legal
-              </h4>
-              <ul className="flex flex-col gap-4 text-xs text-[#9cb0ba]">
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Privacy Protocol
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Encryption Terms
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    End User License
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Contact Admin
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-border-dark flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[10px] font-bold text-[#5a6e78] tracking-widest uppercase">
-              © 2024 PIV_SYSTEM [v4.2.0-STABLE]
+    <footer className="border-t border-[rgba(255,255,255,0.1)] bg-[#080c0e] py-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div className="md:col-span-2">
+            <Link to="/" className="text-lg font-bold tracking-tighter uppercase text-white mb-6 block">
+              PI SYSTEM
+            </Link>
+            <p className="text-[rgba(255,255,255,0.5)] text-sm max-w-xs leading-relaxed">
+              The definitive cognitive operating system for the modern intellectual elite.
             </p>
           </div>
+          <div>
+            <h4 className="text-[rgba(255,255,255,0.4)] text-[10px] font-bold uppercase tracking-widest mb-6">
+              System
+            </h4>
+            <ul className="flex flex-col gap-4 text-sm text-[rgba(255,255,255,0.6)]">
+              <li><a href="#" className="hover:text-accent transition-colors">Neural Mapping</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">System Logs</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">API Access</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[rgba(255,255,255,0.4)] text-[10px] font-bold uppercase tracking-widest mb-6">
+              Legal
+            </h4>
+            <ul className="flex flex-col gap-4 text-sm text-[rgba(255,255,255,0.6)]">
+              <li><a href="#" className="hover:text-accent transition-colors">Privacy</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Terms</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Contact</a></li>
+            </ul>
+          </div>
         </div>
-      </footer>
-    </div>
+        <div className="pt-8 border-t border-[rgba(255,255,255,0.1)] flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[10px] text-[rgba(255,255,255,0.4)] tracking-widest uppercase">
+            © 2026 PI SYSTEM
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }

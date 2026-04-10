@@ -2,6 +2,245 @@ import "../index.css";
 import API from "../API";
 import { useEffect, useState } from "react";
 
+// ============================================
+// SYSTEM INTERFACE COMPONENTS
+// ============================================
+
+// Left Stats Panel - Character stats like Solo Leveling
+function StatsPanel({ username }: { username: string }) {
+  const [stats] = useState({
+    str: 10,
+    dex: 10,
+    vit: 10,
+    int: 10,
+    luk: 10,
+    level: 1,
+    xp: 0,
+    xpToNext: 100,
+  });
+
+  return (
+    <div className="stats-panel rounded-lg p-4 character-panel">
+      {/* Header */}
+      <div className="system-header pb-3 mb-4">
+        <p className="system-title text-center">Status</p>
+      </div>
+
+      {/* User Info */}
+      <div className="text-center mb-6">
+        <p className="text-white text-lg font-bold tracking-wide">{username}</p>
+        <p className="text-[#ffd700] text-xs tracking-widest uppercase mt-1">Rank: E</p>
+      </div>
+
+      {/* Level Progress */}
+      <div className="mb-6">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-[#0da6f2] text-xs uppercase tracking-wider">Level</span>
+          <span className="text-white font-mono text-sm">{stats.level}</span>
+        </div>
+        <div className="level-progress h-2 mb-2">
+          <div
+            className="level-progress-fill"
+            style={{ width: `${(stats.xp / stats.xpToNext) * 100}%` }}
+          />
+        </div>
+        <p className="text-[rgba(255,255,255,0.4)] text-[10px] text-right font-mono">
+          {stats.xp} / {stats.xpToNext} XP
+        </p>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="space-y-1">
+        {[
+          { label: "STR", value: stats.str },
+          { label: "DEX", value: stats.dex },
+          { label: "VIT", value: stats.vit },
+          { label: "INT", value: stats.int },
+          { label: "LUK", value: stats.luk },
+        ].map((stat) => (
+          <div key={stat.label} className="stat-row">
+            <span className="stat-label">{stat.label}</span>
+            <span className="stat-value">{stat.value}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Health/Mana Bars */}
+      <div className="mt-6 space-y-3">
+        <div>
+          <div className="flex justify-between text-[10px] mb-1">
+            <span className="text-red-400 uppercase">HP</span>
+            <span className="text-white/60">100/100</span>
+          </div>
+          <div className="h-1 bg-red-900/30 rounded overflow-hidden">
+            <div className="h-full w-full bg-gradient-to-r from-red-600 to-red-400" />
+          </div>
+        </div>
+        <div>
+          <div className="flex justify-between text-[10px] mb-1">
+            <span className="text-blue-400 uppercase">MP</span>
+            <span className="text-white/60">50/50</span>
+          </div>
+          <div className="h-1 bg-blue-900/30 rounded overflow-hidden">
+            <div className="h-full w-full bg-gradient-to-r from-blue-600 to-blue-400" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Right Menu Panel
+function MenuPanel() {
+  const [activeMenu, setActiveMenu] = useState("quests");
+
+  const menuItems = [
+    { id: "system", label: "System" },
+    { id: "inventory", label: "Inventory" },
+    { id: "skill", label: "Skill" },
+    { id: "quests", label: "Quest" },
+    { id: "status", label: "Status" },
+    { id: "guild", label: "Guild" },
+    { id: "market", label: "Market" },
+    { id: "mail", label: "Mail" },
+  ];
+
+  return (
+    <div className="menu-panel rounded-lg overflow-hidden h-fit">
+      <div className="system-header p-3">
+        <p className="system-title text-center">Menu</p>
+      </div>
+      <div>
+        {menuItems.map((item) => (
+          <div
+            key={item.id}
+            className={`menu-item ${activeMenu === item.id ? "active" : ""}`}
+            onClick={() => setActiveMenu(item.id)}
+          >
+            {item.label}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Notification Panel - Bottom
+function NotificationPanel() {
+  const notifications = [
+    "[SYSTEM] Welcome to PI SYSTEM",
+    "[QUEST] Complete your daily tasks to earn XP",
+    "[SYSTEM] Focus mode available - start a session",
+  ];
+
+  return (
+    <div className="notification-panel rounded-lg p-3 mt-4">
+      <div className="flex items-center gap-2 mb-2">
+        <div className="w-1.5 h-1.5 bg-[#ffd700] rounded-full animate-pulse" />
+        <span className="text-[#ffd700] text-[10px] uppercase tracking-widest">Notifications</span>
+      </div>
+      <div className="space-y-1">
+        {notifications.map((notif, i) => (
+          <p key={i} className="notification-text text-xs">
+            {notif}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Quest Card Component
+interface Quest {
+  id: number;
+  title: string;
+  status: "active" | "pending" | "completed";
+  xp: number;
+}
+
+function QuestCard({ quest }: { quest: Quest }) {
+  return (
+    <div className="quest-card rounded-lg p-4">
+      <div className="flex justify-between items-start mb-2">
+        <span className="quest-title">{quest.title}</span>
+        <span className={`quest-status ${quest.status}`}>{quest.status}</span>
+      </div>
+      <div className="flex justify-between items-center">
+        <span className="text-[rgba(255,255,255,0.4)] text-xs">Reward</span>
+        <span className="text-[#0da6f2] text-xs font-mono">+{quest.xp} XP</span>
+      </div>
+    </div>
+  );
+}
+
+// Main Content Area - Quests
+function ContentPanel() {
+  const [quests] = useState<Quest[]>([
+    { id: 1, title: "Complete morning deep work session", status: "active", xp: 50 },
+    { id: 2, title: "Review and link notes in system", status: "pending", xp: 30 },
+    { id: 3, title: "Log today's decisions", status: "pending", xp: 20 },
+    { id: 4, title: "Update skill tree progress", status: "completed", xp: 25 },
+  ]);
+
+  return (
+    <div className="h-full">
+      <div className="system-header pb-3 mb-4">
+        <p className="system-title">Current Quests</p>
+      </div>
+
+      {/* Quest List */}
+      <div className="space-y-3">
+        {quests.map((quest) => (
+          <QuestCard key={quest.id} quest={quest} />
+        ))}
+      </div>
+
+      {/* Quick Stats */}
+      <div className="mt-6 grid grid-cols-2 gap-3">
+        <div className="glass p-3 rounded-lg text-center">
+          <p className="text-[rgba(255,255,255,0.4)] text-[10px] uppercase mb-1">Today</p>
+          <p className="text-white text-lg font-mono">3/5</p>
+          <p className="text-[rgba(255,255,255,0.4)] text-[10px]">tasks</p>
+        </div>
+        <div className="glass p-3 rounded-lg text-center">
+          <p className="text-[rgba(255,255,255,0.4)] text-[10px] uppercase mb-1">Streak</p>
+          <p className="text-[#0da6f2] text-lg font-mono">7</p>
+          <p className="text-[rgba(255,255,255,0.4)] text-[10px]">days</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Session Timer
+function SessionTimer() {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime((t) => t + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hrs.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  return (
+    <div className="glass px-4 py-2 rounded-md text-center">
+      <p className="text-[10px] text-[rgba(255,255,255,0.5)] uppercase">Session Time</p>
+      <p className="text-xl font-mono text-white">{formatTime(time)}</p>
+    </div>
+  );
+}
+
+// ============================================
+// MAIN COMPONENT
+// ============================================
 
 export default function Main() {
   const [username, setUsername] = useState("");
@@ -10,168 +249,45 @@ export default function Main() {
     const fetchUsername = async () => {
       try {
         const res = await API.get("/v1/user/username");
-
         setUsername(res.data.username);
       } catch (err) {
         console.error(err);
       }
     };
-
     fetchUsername();
   }, []);
 
-  let hour = 0;
-  let minute = 0;
-  let second = 0;
-  let streak = 0;
-  let task_1;
-  let task_2;
-  let task_3;
-  let xp_gain_from_task;
-  let status_of_task;
   return (
-    <main className="flex flex-col px-40 gap-5">
-      <div className="flex items-center justify-center text-white">
-        <div className="w-full ">
-          <div className="flex flex-row  justify-between">
-            <span className="flex flex-row justify-between w-55 items-baseline">
-              {" "}
-              <span className="text-[14px] text-[#0da6f2]">
-                SYSTEM.ACCESS_GRANTED
-              </span>
-              <hr className="border-[#0da6f2] border[0.9px] w-8 bottom-9 " />
-            </span>
-
-            <span className="flex flex-row justify-center items-baseline text-[#0da6f2]  text-[14px]">
-              PRIMAL_SYNTHESIS V2.0.1
-            </span>
-          </div>
-          <div className="flex flex-row justify-between w-full">
-            {" "}
-            <div className="flex flex-row">
-              <span className="flex-row text-3xl">
-                <span className="text-white">USER_ID: </span>
-                <span className="text-white">{username || "ID"}</span>
-              </span>
-            </div>
-            <div className="flex flex-row justify-between  pt-1 gap-2">
-              <span className="backdrop-blur-md bg-white/3  text-2xl flex flex-col justify-center items-center border-[0.1px] py-0.5 px-2 border-white/10 uppercase">
-                <p className="text-gray-400 text-[10px]">session_hours</p>
-                <span className="flex flex-row gap-1">
-                  <span>{hour}</span>:<span>{minute}</span>:
-                  <span>{second}</span>
-                </span>
-              </span>
-              <span className="text-[27px] border-[0.1px] py-0.5 px-6 flex flex-col justify-center items-center border-white/10 backdrop-blur-md bg-white/3 ">
-                <p className="text-gray-400 text-[10px]">STREAK</p>
-                {streak}
-              </span>
-            </div>
-          </div>
+    <main className="system-interface p-4 lg:p-6">
+      {/* Top Bar */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#0da6f2] animate-pulse"></span>
+          <span className="text-[#0da6f2] text-xs uppercase tracking-widest">System Access Granted</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <SessionTimer />
         </div>
       </div>
 
+      {/* System Interface Layout */}
+      <div className="grid grid-cols-12 gap-4">
+        {/* Left Panel - Stats */}
+        <div className="col-span-12 md:col-span-3 lg:col-span-3">
+          <StatsPanel username={username || "Hunter"} />
+        </div>
 
-
-      {/* SHARP-EDGED MINIMAL GLASS PROTOCOL TABLE */}
-      <div className="w-60 max-w-md bg-white/3 backdrop-blur-md border border-white/10 p-8 shadow-2xl">
-        <h2 className="text-white/40 uppercase tracking-[0.3em] text-[10px] font-bold mb-8">
-          Current Tasks
-        </h2>
-
-        <div className="flex flex-col">
-          {/* Row 1 */}
-          <div className="flex items-start gap-2 py-2.5 border-b border-white/5">
-            <div className="w-2.5 h-2.5 rounded-full border border-cyan-400 mt-1 shrink-0" />
-            <div className="flex flex-col">
-              <span className="text-white text-lg font-medium leading-none">
-                {task_1 || "Task 1"}
-              </span>
-              <span className="text-cyan-400 text-[9px] font-black uppercase mt-2 tracking-widest">
-                {status_of_task || "unknown"} ({xp_gain_from_task || "...xp"})
-              </span>
-            </div>
-          </div>
-
-          {/* Row 2 */}
-          <div className="flex items-start gap-2 py-2.5 border-b border-white/5 ">
-            <div className="w-2.5 h-2.5 rounded-full border border-white/40 mt-1 shrink-0" />
-            <div className="flex flex-col">
-              <span className="text-white text-lg font-medium leading-none">
-                {task_2 || "Task 2"}
-              </span>
-              <span className="text-white/60 text-[9px] font-black uppercase mt-2 tracking-widest">
-                {status_of_task || "unknown"} ({xp_gain_from_task || "...xp"})
-              </span>
-            </div>
-          </div>
-
-          {/* Row 3 */}
-          <div className="flex items-start gap-2 py-2.5">
-            <div className="w-2.5 h-2.5 rounded-full border border-red-600 mt-1 shrink-0" />
-            <div className="flex flex-col">
-              <span className="text-white text-lg font-medium leading-none">
-                {task_3 || "Task 3"}
-              </span>
-              <span className="text-red-600 text-[9px] font-black uppercase mt-2 tracking-widest">
-                {status_of_task || "unknown"} ({xp_gain_from_task || "...xp"})
-              </span>
-            </div>
+        {/* Center Panel - Content */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-6">
+          <div className="glass rounded-lg p-4 h-full">
+            <ContentPanel />
           </div>
         </div>
-      </div>
 
-      {/* FULL-HEIGHT SYSTEM TERMINAL */}
-      <div className="flex-1 w-120 min-h-50 bg-black/40 backdrop-blur-md border border-white/5 relative font-mono flex flex-col">
-        {/* Left Side Accent Bar */}
-        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#0da6f2] shadow-[0_0_15px_rgba(13,166,242,0.3)]" />
-
-        <div className="p-6 flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center gap-2 mb-6 shrink-0">
-            <div className="w-1.5 h-1.5 bg-[#0da6f2] animate-pulse" />
-            <h3 className="text-[#0da6f2] text-[10px] font-black uppercase tracking-[0.3em]">
-              System Message Log
-            </h3>
-          </div>
-
-          {/* Message Area - Scrollable */}
-          <div className="flex-1 overflow-y-auto space-y-4 pr-4 custom-scrollbar">
-            {/* Entry 1 */}
-            <div className="flex gap-4 items-start">
-              <span className="text-white/10 text-[10px] mt-1 shrink-0">
-                [18:32]
-              </span>
-              <p className="text-red-500/80 text-[12px] leading-relaxed tracking-tight">
-                <span className="font-black mr-2 uppercase">Alert:</span>
-                Discipline Stat degrading due to missed protocol.
-              </p>
-            </div>
-
-            {/* Entry 2 */}
-            <div className="flex gap-4 items-start">
-              <span className="text-white/10 text-[10px] mt-1 shrink-0">
-                [18:35]
-              </span>
-              <p className="text-[#0da6f2]/80 text-[12px] leading-relaxed tracking-tight">
-                <span className="font-black mr-2 uppercase">System:</span>
-                Analyzing cognitive output variance...
-              </p>
-            </div>
-          </div>
-
-          {/* Terminal Input Line */}
-          <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-4 shrink-0">
-            <span className="text-[#0da6f2] text-[12px] font-black tracking-widest">
-              &gt;
-            </span>
-            <input
-              type="text"
-              placeholder="ENTER_COMMAND..."
-              className="bg-transparent border-none outline-none text-white/80 text-[12px] w-full placeholder:text-white/10 placeholder:uppercase tracking-[0.2em]"
-            />
-            <div className="w-2 h-4 bg-[#0da6f2]/60 animate-pulse shrink-0" />
-          </div>
+        {/* Right Panel - Menu */}
+        <div className="col-span-12 md:col-span-3 lg:col-span-3">
+          <MenuPanel />
+          <NotificationPanel />
         </div>
       </div>
     </main>
@@ -180,19 +296,15 @@ export default function Main() {
 
 export function WelcomeMain() {
   return (
-    <>
-      <main className="flex flex-col items-center justify-center min-h-screen dm-sans text-center bg-[#080c0e] text-white ">
-        <h1 className="text-7xl md:text-8xl font-extrabold text-white leading-[0.95] gap-0">
-          UPGRADE YOUR
-          <br />
-          <span className="text-blue-500">THINKING</span>
-        </h1>
-
-        <p className="mt-4 text-gray-400 max-w-xl text-[1.1rem]">
-          The Personal Intelligence System is designed to replace motivation
-          with structured discipline.
-        </p>
-      </main>
-    </>
+    <main className="flex flex-col items-center justify-center min-h-[70vh] text-center px-6 bg-[#080c0e]">
+      <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 uppercase">
+        Upgrade Your
+        <br />
+        <span className="text-accent uppercase">Thinking</span>
+      </h1>
+      <p className="text-[rgba(255,255,255,0.85)] max-w-lg text-lg mb-8  capitalize">
+        The Personal Intelligence System is designed to replace motivation with structured discipline.
+      </p>
+    </main>
   );
 }

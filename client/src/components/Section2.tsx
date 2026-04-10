@@ -1,33 +1,25 @@
 import "../index.css";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
 export default function Section2() {
   return (
-    <>
-      <div>
-        <hr className=" border-gray-600"></hr>
-        <section className=" px-6 py-32 text-center border-t border-border-dark h-[90vh] overflow-hidden bg-[#060608]">
-          <div className="flex flex-col items-center mb-20">
-            <h1 className="text-white text-5xl md:text-[4rem] font-black uppercase tracking-tighter  mb-6 space-grotesk">
-              READY TO LOCK IN?
-            </h1>
-            <p className="text-gray-500 w-3xl mb-20">
-              Initialize your Personal Intelligence System today. Join the
-              network of 50k+ deep thinkers building their Lock in Arc of 2026.
-              <br></br>
-              <span className="font-bold text-shadow-cyan-100">
-                Be the best version of yourself .
-              </span>
-            </p>
-
-            <button className="bg-[#0da6f2] text-white w-40 h-12 dm-sans text-[15px] uppercase font-bold">
-              Start Now
-            </button>
-          </div>
-          <hr className="border-gray-600 "></hr>
-          <Footer />
-        </section>
+    <section className="bg-[#080c0e] py-24 px-6 border-t border-[rgba(255,255,255,0.1)]">
+      <div className="max-w-3xl mx-auto text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          Ready to lock in?
+        </h1>
+        <p className="text-[rgba(255,255,255,0.85)] mb-8">
+          Initialize your Personal Intelligence System today. Join thousands of deep thinkers building their best version they can be.
+        </p>
+        <Link
+          to="/SignUpPage"
+          className="inline-block px-8 py-3 bg-[#0da6f2]  rounded-md hover:bg-[#33b5f5] transition-colors"
+        >
+          <span className=" text-white font-semibold">Start Now</span>
+        </Link>
       </div>
-    </>
+      <Footer />
+    </section>
   );
 }

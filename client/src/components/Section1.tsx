@@ -1,139 +1,49 @@
 import "../index.css";
 import { Link } from "react-router-dom";
 
+const features = [
+  { title: "Neural Linking", desc: "Discover connections between ideas" },
+  { title: "The System", desc: "An assistant to guide your journey" },
+  { title: "Habit Maker", desc: "Build habits, break vices" },
+  { title: "The Roadmap", desc: "Goals and milestones tailored to you" },
+  { title: "Focus Mode", desc: "Transform sessions into output" },
+  { title: "Player Stats", desc: "Make progress visible" },
+  { title: "Skill Trees", desc: "Grow domains like branches" },
+  { title: "Discipline Engine", desc: "The law of the System" },
+];
+
 export default function Section1() {
   return (
-    <>
-      <div>
-        <hr className="border-gray-700 border"></hr>
-        <section className="text-white bg-[#090606] p-28 w-full flex flex-col items-center h-[90vh]">
-          <div className="flex flex-col gap-1.5 w-fit items-center ">
-            <div>
-              <span className="inline-flex gap-3 flex-row items-center">
-                <span className="border-[0.9px] border-[#0da6f2] h-0 w-7 "></span>
-                <h3 className="text-[14px] font-bold dm-sans text-[#0da6f2] my-2">
-                  CORE MODULES
-                </h3>
-              </span>
-              <h1 className="font-bold text-5xl dm-sans">
-                SYSTEM ARCHITECTURE
-              </h1>
-              <p className="text-gray-400 text-[1rem] max-w-xl my-1.5">
-                P.I.S is designed to bring out the best in it's user.<br></br>{" "}
-                It won't just track progress but enforce it through its features
-                and engaging interface.{" "}
-              </p>
-            </div>
-
-            <div className="flex flex-wrap">
-              <div className="flex">
-                <div>
-                  <Link to="">
-                    <span className=" border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex flex-col p-6 my-4.75">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">NEURAL LINKING</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        Discover links between ideas creating a cohesive web.
-                      </p>
-                    </span>
-                  </Link>
-                  <Link to="">
-                    <span className=" flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">THE SYSTEM</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        An assistant built to guide you through your journey.
-                      </p>
-                    </span>
-                  </Link>
-                </div>
-                <div>
-                  <Link to="">
-                    <span className=" flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6 my-4.75 mx-5">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">HABIT MAKER</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        Enforces habits that builds and chops vices.
-                      </p>
-                    </span>
-                  </Link>
-                  <Link to="">
-                    <span className="flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6 mx-5">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">THE ROADMAP</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        A roadmap tailored to your goals and milestones.
-                      </p>
-                    </span>
-                  </Link>
-                </div>
-                <div>
-                  <Link to="">
-                    <span className="flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6 my-4.75">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">FOCUS MODE</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        Transform sessions into measurable output.
-                      </p>
-                    </span>
-                  </Link>
-                  <Link to="">
-                    <span className="flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">PLAYER STATS</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        Make progress visible by upgrading your stats.
-                      </p>
-                    </span>
-                  </Link>
-                </div>
-
-                <div>
-                  <Link to="">
-                    <span className="flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6 my-4.75 mx-5">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">SKILL TREES</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        Each domain is a branch grow it out .
-                      </p>
-                    </span>
-                  </Link>
-                  <Link to="">
-                    <span className="flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6 mx-5">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">DISCIPLINE ENGINE</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        The law of the System; The Rook.
-                      </p>
-                    </span>
-                  </Link>
-                </div>
-                <div>
-                  <Link to="">
-                    <span className="flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6 my-4.75">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">PROGRESS GRAPHS</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        A roadmap tailored to your
-                      </p>
-                    </span>
-                  </Link>
-                  <Link to="">
-                    <span className="flex border bg-[#161618] border-gray-800 h-44 w-66 dm-sans flex-col p-6">
-                      <span className="h-27 w-27 text-white">#</span>
-                      <h1 className="font-bold my-2">THE ROADMAP</h1>
-                      <p className="text-gray-400 text-[0.9rem]">
-                        Visual truth of progress and other aspects of
-                        improvement.
-                      </p>
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </div>
+    <section className="bg-[#080c0e] py-24 px-6 border-t border-[rgba(255,255,255,0.1)]">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="w-8 h-px bg-accent"></span>
+            <span className="text-accent text-sm font-semibold uppercase tracking-widest">Core Modules</span>
+            <span className="w-8 h-px bg-accent"></span>
           </div>
-        </section>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">System Architecture</h1>
+          <p className="text-[rgba(255,255,255,0.85)] max-w-xl mx-auto">
+            P.I.S is designed to bring out the best in you. Track progress and enforce discipline through engaging features.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {features.map((feature, i) => (
+            <Link
+              key={i}
+              to=""
+              className="group p-6 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.08)] hover:border-accent/30 transition-all duration-300"
+            >
+              <div className="w-10 h-10 mb-4 rounded-md bg-accent/10 flex items-center justify-center text-accent font-bold text-lg group-hover:bg-accent group-hover:text-white transition-colors">
+                {i + 1}
+              </div>
+              <h3 className="text-white font-semibold mb-2">{feature.title}</h3>
+              <p className="text-[rgba(255,255,255,0.5)] text-sm">{feature.desc}</p>
+            </Link>
+          ))}
+        </div>
       </div>
-    </>
+    </section>
   );
 }

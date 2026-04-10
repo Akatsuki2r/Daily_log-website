@@ -1,16 +1,40 @@
 import { Link } from "react-router-dom";
-/* import { IoIosNotifications } from "react-icons/io";
-import { RiSettings2Fill } from "react-icons/ri"; */
+import { FaArrowLeft } from "react-icons/fa";
 import "../index.css";
 
 export default function Navbar() {
   return (
-    <nav className="p-3 flex justify-center items-center nav-glass text-white content-center sticky  top-0 z-0 pb-10 pt-10">
-      <div className="flex flex-row justify-between gap-15 m text-[#20b2fb] content-center w-116">
-        <Link to="/Nodes">Nodes</Link>
-        <Link to="/Sessions">Sessions</Link>
-        <Link to="/Decision_Log">Decision Log</Link>
-        <Link to="/Dashboard">Dashboard</Link>
+    <nav className="sticky top-0 z-50 border-b border-[rgba(255,255,255,0.1)] bg-[#0d1117]/80 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-10">
+          <Link to="/" className="text-xl font-bold tracking-tight">
+            <span className="text-white">PI</span>
+            <span className="text-accent ml-1">SYSTEM</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[rgba(255,255,255,0.85)]">
+            <Link to="/Nodes" className="hover:text-accent transition-colors">
+              Nodes
+            </Link>
+            <Link
+              to="/Sessions"
+              className="hover:text-accent transition-colors"
+            >
+              Sessions
+            </Link>
+            <Link
+              to="/Decision_Log"
+              className="hover:text-accent transition-colors"
+            >
+              Decision Log
+            </Link>
+            <Link
+              to="/Dashboard"
+              className="hover:text-accent transition-colors"
+            >
+              Dashboard
+            </Link>
+          </div>
+        </div>
       </div>
     </nav>
   );
@@ -18,73 +42,57 @@ export default function Navbar() {
 
 export function Navbar2() {
   return (
-    <>
-      <div>
-        <nav className="px-50 p-3 flex justify-between items-center  text-white content-center dm-sans bg-black">
-          <div className="inline-flex items-center gap-16 ">
-            <h1 className="text-2xl font-bold">
-              <span className="mx-2 tracking-tighter text-shadow-[#ffffff]">
-                PI
-              </span>
-              <span className="color  text-shadow-[#0da6f2]">SYSTEM</span>
-            </h1>
-
-            <div className="muted inline-flex gap-16 flex-row-reverse text-[14px] font-bold dm-sans">
-              <span>IGRIS</span>
-              <span>DOCUMENTATION</span>
-            </div>
-          </div>
-
-          <div className="flex flex-row justify-between gap-3 px-1 py-1 content-center">
-            <Link to={"/SignUpPage"}>
-              {" "}
-              <button className="border bg-[#0da6f2] hover:brightness-105 border-none p-0.5 px-2 text-[14px] font-bold rounded-xs">
-                SIGN UP
-              </button>
-            </Link>
-            <Link to={"/Login"}>
-              <button className="border  bg-[#0da6f2] hover:brightness-95 border-none p-0.5 px-2 text-[14px] font-bold rounded-xs">
-                LOGIN
-              </button>
-            </Link>
-          </div>
-        </nav>
+    <nav className="border-b border-[rgba(255,255,255,0.1)] bg-[#080c0e]">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Link to="/" className="text-xl font-bold tracking-tight">
+          <span className="text-white">PI</span>
+          <span className="text-[#0da6f2] ml-1">SYSTEM</span>
+        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            to="/Login"
+            className="px-4 py-2  transition-colors border border-[#0da6f2] rounded-md glass"
+          >
+            <span className=" text-white hover:text-white text-sm font-medium">
+              Login
+            </span>
+          </Link>
+          <Link
+            to="/SignUpPage"
+            className="px-4 py-2 bg-[#0da6f2] font-semibold rounded-md hover:bg-[#33b5f5] transition-colors"
+          >
+            <span className="text-white text-sm">Sign Up</span>
+          </Link>
+        </div>
       </div>
-    </>
+    </nav>
   );
 }
 
 export function Navbar3() {
   return (
-    <>
-      <div>
-        <nav className="pl-10 pt-3 pb-2 flex justify-between items-center  text-white content-center dm-sans mx-10">
-          <h1 className="text-[28px] font-bold inline-flex">
-            <span className="mx-2 tracking-tighter text-shadow-[#ffffff]">
-              PI
-            </span>
-            <div className="drop-shadow-[0_0_100px_rgba(46,231,255,1)]">
-              <span className="color ">SYSTEM</span>
-            </div>
-          </h1>
-        </nav>
+    <nav className="border-b border-[rgba(255,255,255,0.1)] bg-[#080c0e]">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <Link to="/" className="text-2xl font-bold tracking-tight">
+          <span className="text-white">PI</span>
+          <span className="text-accent ml-1">SYSTEM</span>
+        </Link>
       </div>
-    </>
+    </nav>
   );
 }
 
-import { FaArrowLeft } from "react-icons/fa";
-
 export function Navbar4() {
   return (
-    <div>
-      <nav className="p-2 flex justify-between items-center  text-white content-center dm-sans mx-7 mb-45 mt-15 ">
-        <Link to={"/"}>
-          <button className="border border-white/30 rounded-full p-3 bg-white/0 backdrop-blur-sm shadow-sm transition-all hover:bg-white/10 active:scale-95">
-            <FaArrowLeft />
-          </button>
+    <nav className="border-b border-[rgba(255,255,255,0.1)] bg-[#080c0e]">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
+        <Link
+          to="/"
+          className="p-2 rounded-full border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.05)] transition-colors"
+        >
+          <FaArrowLeft className="w-4 h-4 text-[rgba(255,255,255,0.85)]" />
         </Link>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
