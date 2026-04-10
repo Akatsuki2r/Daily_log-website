@@ -35,6 +35,7 @@ origins = [
     "http://localhost:5173",     # Vite dev server
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
+    "http://localhost:3456",     # Rust API
     # TODO: Add your production frontend URL here
     # "https://yourdomain.com",
 ]

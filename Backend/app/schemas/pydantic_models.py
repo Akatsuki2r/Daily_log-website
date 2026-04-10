@@ -18,11 +18,11 @@ class Users(BaseModel):
         max_length=50
     )
     email: str = Field(
-        max_length=130
+        max_length=150
     )
     password: str = Field(
         min_length=4,
-        max_length=120
+        max_length=130
     )
 
 
@@ -52,10 +52,3 @@ class Token(BaseModel):
     token_type: str = "bearer"
 
 
-class TokenData(BaseModel):
-    """
-    Token payload data model.
-
-    Represents the data encoded in a JWT token.
-    """
-    email: str | None = None

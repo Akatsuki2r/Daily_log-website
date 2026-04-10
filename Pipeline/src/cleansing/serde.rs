@@ -85,8 +85,8 @@ mod tests {
     fn test_api_config_defaults() {
         // Ensure config can be created
         let config = ApiConfig {
-            base_url: "http://localhost:8000".to_string(),
+            base_url: "http://localhost:3456".to_string(),
         };
-        assert_eq!(config.notes_url(), "http://localhost:8000/notes");
+        assert_eq!(config.notes_url(), "http://localhost:3456/notes");
     }
 }

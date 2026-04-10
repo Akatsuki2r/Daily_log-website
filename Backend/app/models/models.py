@@ -61,7 +61,8 @@ class User(Base):
     )
     username: Mapped[str] = mapped_column(
         String(45),
-        nullable=False
+        nullable=False,
+        unique=True   #We are using the username alot for authentication so its only reasonable to make it unique
     )
     email: Mapped[str] = mapped_column(
         String(60),

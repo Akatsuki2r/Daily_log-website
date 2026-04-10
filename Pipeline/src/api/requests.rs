@@ -16,11 +16,11 @@ impl ApiConfig {
     /// Create configuration from environment variables
     ///
     /// Uses:
-    /// - `API_BASE_URL` for the base URL (defaults to http://localhost:8000)
+    /// - `API_BASE_URL` for the base URL (defaults to http://localhost:3456)
     /// - `API_TOKEN` for authentication (optional)
     pub fn from_env() -> Self {
         let base_url = env::var("API_BASE_URL")
-            .unwrap_or_else(|_| "http://localhost:8000".to_string());
+            .unwrap_or_else(|_| "http://localhost:3456".to_string());
 
         let token = env::var("API_TOKEN").ok();
 

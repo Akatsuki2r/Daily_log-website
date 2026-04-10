@@ -13,10 +13,8 @@ from functools import lru_cache
 from typing import List, Dict, Any
 
 from joppy.client_api import ClientApi
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+from app.core.config import settings
 
 
 # Custom exception for configuration errors
@@ -25,13 +23,12 @@ class NotesConfigurationError(RuntimeError):
     pass
 
 
-# Joplin API configuration from environment variables
-JOPLIN_TOKEN = os.getenv("JOPLIN_TOKEN")
-if not JOPLIN_TOKEN:
+# Joplin API configuration from centralized config
+if not settings.joplin_token:
     # Provide a fallback for development, but warn
     import warnings
     warnings.warn(
-        "JOPLIN_TOKEN not set. Notes functionality will not work. "
+        "Joplin token not configured. Notes functionality will not work. "
         "Set JOPLIN_TOKEN in your .env file.",
         RuntimeWarning
     )
@@ -45,10 +42,9 @@ def get_joplin_client() -> ClientApi | None:
     Returns:
         ClientApi instance if token is configured, None otherwise
     """
-    token = os.getenv("JOPLIN_TOKEN")
-    if not token:
+    if not settings.joplin_token:
         return None
-    return ClientApi(token=token)
+    return ClientApi(token=settings.joplin_token.get_secret_value())
 
 
 def fetch_joplin_notes(fields: str = "title,id,parent_id,body") -> List[Any]:

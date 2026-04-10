@@ -2,27 +2,24 @@
 Database configuration module.
 
 Handles database connection setup using SQLAlchemy.
-Uses environment variables for connection parameters.
+Uses centralized configuration for connection parameters.
 """
 
 from sqlalchemy.engine import URL
-from dotenv import load_dotenv
-import os
 
-# Load environment variables
-load_dotenv()
+from app.core.config import settings
 
 
 def create_database_url() -> URL:
     """
-    Create a SQLAlchemy URL object from environment variables.
+    Create a SQLAlchemy URL object from centralized config.
 
-    Expected environment variables:
-        - DB_USERNAME: Database username
-        - DB_PASSWORD: Database password
-        - DB_HOST: Database host (default: localhost)
-        - DB_PORT: Database port (default: 5432)
-        - DB_NAME: Database name (default: Daily_log)
+    Configuration loaded from:
+        - settings.db_username: Database username
+        - settings.db_password: Database password
+        - settings.db_host: Database host (default: localhost)
+        - settings.db_port: Database port (default: 5432)
+        - settings.db_name: Database name (default: Daily_log)
 
     Returns:
         URL: SQLAlchemy database URL object
@@ -30,25 +27,16 @@ def create_database_url() -> URL:
     Raises:
         ValueError: If required environment variables are not set
     """
-    username = os.getenv("DB_USERNAME")
-    password = os.getenv("DB_PASSWORD")
-
-    if not username:
-        raise ValueError("DB_USERNAME environment variable is required")
-    if not password:
-        raise ValueError("DB_PASSWORD environment variable is required")
-
-    host = os.getenv("DB_HOST", "localhost")
-    port = int(os.getenv("DB_PORT", "5432"))
-    database = os.getenv("DB_NAME", "Daily_log")
+    username = settings.db_username
+    password = settings.db_password.get_secret_value()
 
     return URL.create(
         "postgresql",
         username=username,
         password=password,
-        host=host,
-        port=port,
-        database=database
+        host=settings.db_host,
+        port=settings.db_port,
+        database=settings.db_name
     )
 
 

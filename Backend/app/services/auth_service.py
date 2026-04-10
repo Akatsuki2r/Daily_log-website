@@ -14,25 +14,17 @@ from typing import Annotated
 from jose import jwt, JWTError
 from fastapi.security import OAuth2PasswordBearer
 from datetime import timedelta, datetime, timezone
-import os
-from dotenv import load_dotenv
 
 from app.models.models import get_db, User
-
-# Load environment variables
-load_dotenv()
+from app.core.config import settings
 
 # Initialize Argon2 password hasher
 ph = PasswordHasher()
 
-# JWT Configuration - loaded from environment variables
-# SECURITY: These should be properly set in production via env vars
-SECRET_KEY = os.getenv("SECRET_KEY")
-if not SECRET_KEY:
-    raise ValueError("SECRET_KEY environment variable is required")
-
-ALGORITHM = os.getenv("ALGORITHM", "HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60"))
+# JWT Configuration - loaded from centralized config
+SECRET_KEY = settings.secret_key.get_secret_value()
+ALGORITHM = settings.algorithm
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.access_token_expire_minutes
 
 # OAuth2 scheme for token URL
 oauth2_bearer = OAuth2PasswordBearer(tokenUrl='v1/authentication/login')
@@ -68,7 +60,7 @@ def verify_password(hashed_password: str, plain_password: str) -> bool:
     return ph.verify(hashed_password, plain_password)
 
 
-def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
+def create_access_token(data: dict, expires_delta: timedelta) -> str:#So we need some type of fallback if theres no timedelta cause we need and espire date or time
     """
     Create a JWT access token.
 
